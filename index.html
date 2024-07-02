@@ -307,7 +307,22 @@
         }
     }
   });
-  // Separate function to handle form submission
+  function validateFormData(formData) {
+  const name = formData.get('name');
+  const email = formData.get('email');
+  
+  if (!name || !email) {
+    return 'Nome e email são obrigatórios.';
+  }
+
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+    return 'Endereço de email inválido.';
+  }
+
+  return null;
+}
+
 async function handleFormSubmission(form) {
   const formData = new FormData(form);
   const statusDiv = document.getElementById('form-status');
@@ -315,32 +330,37 @@ async function handleFormSubmission(form) {
   
   const validationError = validateFormData(formData);
   if (validationError) {
-      return { success: false, message: validationError };
+    return { success: false, message: validationError };
   }
 
   spinner.style.display = 'block';
   statusDiv.textContent = '';
 
-  try {
-      const response = await fetch(form.action, {
-          method: form.method,
-          body: formData
-      });
+  console.log('Form submission started');
 
-      if (response.ok) {
-          return { success: true, message: 'Sua inscrição foi enviada. Obrigado por Responder!' };
-      } else {
-          const errorResponse = await response.json();
-          return { success: false, message: errorResponse.message || 'Sua inscrição não foi enviada. Aguarde e tente novamente. Caso a falha persista, entre em contato com o representante da ExpoTEA' };
-      }
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData
+    });
+
+    console.log('Response received', response);
+
+    if (response.ok) {
+      return { success: true, message: 'Sua inscrição foi enviada. Obrigado por Responder!' };
+    } else {
+      const errorResponse = await response.json();
+      return { success: false, message: errorResponse.message || 'Sua inscrição não foi enviada. Aguarde e tente novamente. Caso a falha persista, entre em contato com o representante da ExpoTEA.' };
+    }
   } catch (error) {
-      return { success: false, message: 'Ocorreu um erro: ' + error.message };
+    console.error('Error during form submission', error);
+    return { success: false, message: 'Ocorreu um erro: ' + error.message };
   } finally {
-      spinner.style.display = 'none';
+    spinner.style.display = 'none';
+    console.log('Form submission ended');
   }
 }
 
-// Event listener for form submission
 async function submitForm(event) {
   event.preventDefault();
   const form = event.target;
@@ -348,9 +368,13 @@ async function submitForm(event) {
   const statusDiv = document.getElementById('form-status');
   statusDiv.textContent = result.message;
   if (result.success) {
-      form.reset();
+    form.reset();
   }
 }
+
+// Attach event listener
+document.getElementById('multi-page-form').addEventListener('submit', submitForm);
+
 
   </script>
 </body>
