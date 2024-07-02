@@ -139,8 +139,8 @@ const conRadioInputs = document.querySelectorAll('input[name="confirm"]');
 const hiddenField = document.getElementById('neoAutent');
 
 conRadioInputs.forEach(function(conRadioInputs) {
-  conRadioInput.addEventListener('change', function() {
-    if (conRadioInput.value === 'Não' && conRadioInput.checked) {
+  conRadioInputs.addEventListener('change', function() {
+    if (conRadioInputs.value === 'Não' && conRadioInputs.checked) {
       hiddenField.style.display = 'block';
     } else {
       hiddenField.style.display = 'none';
