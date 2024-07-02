@@ -1,85 +1,95 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    background-image: url(/ExpoTea.github.io/images/sobre.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: right;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-image: url(/ExpoTea.github.io/images/sobre.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: right;
+}
 
-  .container {
-    max-width: 35%;
-    background-color: #1414ff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.1);
-    opacity: 80%;
-  }
+.container {
+  width: 90%;
+  max-width: 600px;
+  background-color: #1414ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.1);
+  opacity: 80%;
+}
 
-  .header {
-    width: 100%;
-    background-color: #0000ff;
-    opacity: 100%;
-  }
+.header {
+  width: 100%;
+  background-color: #0000ff;
+  opacity: 100%;
+}
 
-  .header img {
-    max-width: 100%;
-    height: auto;
-  }
+.header img {
+  max-width: 100%;
+  height: auto;
+}
 
-  form {
-    padding: 5%;
-  }
+form {
+  padding: 5%;
+}
 
-  .form-group {
-    margin-bottom: 20px;
-  }
+.form-group {
+  margin-bottom: 20px;
+}
 
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  .form-group input {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-  }
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
 
-  .form-group select {
-    width: 97%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-  }
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
 
-  .form-group button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-  }
+.form-group button:first-child {
+  margin-right: 10px;
+}
 
-  .form-group button:first-child {
-    margin-right: 10px;
-  }
+.page {
+  display: none;
+}
 
-  .page {
-    display: none;
-  }
-
-  .page.active {
-    display: block;
-  }
+.page.active {
+  display: block;
+}
 
 .hidden-itens {
   margin-bottom: 20px;
+}
+
+/* Responsive Adjustments */
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
 }
