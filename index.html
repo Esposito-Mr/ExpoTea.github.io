@@ -9,7 +9,7 @@
     <div class="header">
       <img src="/ExpoTea.github.io/images/01.png" alt="">
     </div>
-    <form id="multi-page-form">
+    <form action="https://script.google.com/macros/s/AKfycbzMwE-MoKa9CFPpYs8Q8cIMaN2XewCC_U54fyIdMa748TNFBem9OuVvBlYIRm12DTkiag/exec" method="POST" onsubmit="submitForm(event)" id="multi-page-form">
       <div class="page active" id="page1">
         <h2>Informações da Empresa</h2>
         <div class="form-group">
@@ -191,7 +191,7 @@
         <h2>Informações do Estande e Pagamento</h2>
         <div class="form-group">
           <label for="estande">Estande Pretendido</label>
-          <input type="text" name="estande" id="estande">
+          <input type="text" name="estande" id="estande" required>
         </div>
         <div class="form-group"><label for="cota">Cota Pretendida</label>
           <select name="cota" id="cota" onchange="updateSecondSelect()">
@@ -264,6 +264,7 @@
     </form>
   </div>
   <script src="/ExpoTea.github.io/JS/index.js"></script>
+  <script src="/JS/connect.js"></script>
   <script>
       // Get references to the radio input and select tags
   const pagRadioInput = document.getElementsByName("forma");
