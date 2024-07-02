@@ -77,8 +77,8 @@
           <label for="e-mail">E-mail</label>
           <input type="email" id="e-mail" name="e-mail" required>
         </div>
-        <div>
-          <p style="font-weight: 900;">Este é o mesmo e-mail do   Autentique?</p>
+        <div class="hidden-itens">
+          <p style="font-weight: 900;">Este é o mesmo e-mail do Autentique?</p>
           <input type="radio" name="confirm" id="yes" value="Sim">Sim
           <input type="radio" name="confirm" id="no" value="Não">Não
         </div>
@@ -92,7 +92,7 @@
           <input type="text" id="brindes" name="brindes" required>
         </div>
         <div class="form-group">
-          <button type="button" onclick="callMultipleFunctions()">Next</button>
+          <button type="button" onclick="nextPage()">Next</button>
         </div>
       </div>
 
@@ -187,7 +187,7 @@
         </div>
       </div>
 
-      <div class="page" id="page2">
+      <div class="page" id="page3">
         <h2>Informações do Estande e Pagamento</h2>
         <div class="form-group">
           <label for="estande">Estande Pretendido</label>
@@ -208,14 +208,11 @@
             <option value="vila">Vila</option>
           </select>
         </div>
-        <div class="form-group" id="foodRadio" style="display: none;">
-          <fieldset>
-            <legend>É Área Food?</legend>
+        <div class="hidden-itens" id="foodRadio" style="display: none;">
+            <p style="font-weight: 900;">É Área Food?</p>
             <input type="radio" name="food" id="ja" value="Sim" onchange="updateSecondSelect()"> Sim
             <input type="radio" name="food" id="nein" value="Não" onchange="updateSecondSelect()"> Não
-          </fieldset>
         </div>
-        
         <div class="form-group">
           <label for="metragem">Metragem do Estande</label>
           <select name="metragem" id="metragem" onchange="updateTextInput()">                    
@@ -233,16 +230,28 @@
           <p>Qualquer negociação a parte deve ser autorizada com comitê organizador</p>
           <textarea id="message" name="message" rows="4" required></textarea>
         </div>
-        <div class="form-group">
-          <fieldset>
-            <legend>Forma de Pagamento</legend>
-            <label for="vista">Á vista</label>
-            <input type="radio" name=forma" id="vista" value="vista">
-            <label for="parcelado">Parcelado</label>
-            <input type="radio" name="forma" id="parcelado" value="parcelado">
-          </fieldset>
+
+        <div class="hidden-itens">
+          <p style="font-weight: 900;">Forma de Pagamento</p>
+          <input type="radio" name="forma" id="vista" value="vista"> Á vista
+          <input type="radio" name="forma" id="parcelado" value="parcelado"> Parcelado
         </div>
 
+        <div class="form-group" id="represent1">
+          <label for="representant">Você é representante?</label>
+          <select name="representant" id="represent">                    
+            <option value="default">Selecione uma opção</option>
+            <option value="yah">Sim</option>
+            <option value="No">Não</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="pay1">
+          <label for="payment">Pagamento</label>
+          <select name="payment" id="pay">                    
+            
+          </select>
+        </div>
 
         <div class="form-group">
           <button type="button" onclick="previousPage()">Previous</button>
@@ -255,5 +264,46 @@
     </form>
   </div>
   <script src="/ExpoTea.github.io/JS/index.js"></script>
+  <script>
+      // Get references to the radio input and select tags
+  const pagRadioInput = document.getElementsByName("forma");
+  const select1 = document.getElementById("represent");
+  const select2 = document.getElementById("pay");
+  const divSel1 = document.getElementById("represent1");
+  const divSel2 = document.getElementById("pay1");
+  
+  // Add event listeners to the radio input
+  for (let i = 0; i < pagRadioInput.length; i++) {
+    pagRadioInput[i].addEventListener("change", function() {
+      if (this.value === "vista") {
+        select2.innerHTML = ""; // Clear the options in select2
+        divSel1.style.display = "none"; // Hide select1
+        divSel2.style.display = "none"; // Hide select2
+      } else if (this.value === "parcelado") {
+        // Insert options into select2 based on select1 value
+        if (select1.value === "yah") {
+          select2.innerHTML = "<option value='comission'>Comissão</option>";
+        } else if (select1.value === "No") {
+          select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
+        }
+        divSel1.style.display = "block"; // Show select1
+        divSel2.style.display = "block"; // Show select2
+      }
+    });
+  }
+  
+ // Add event listener to select1 to dynamically update select2 options
+  select1.addEventListener("change", function() {
+    if (pagRadioInput[1].checked) {
+      if (select1.value === "yah") {
+          select2.setAttribute('disabled', 'disabled');
+          select2.innerHTML = "<option value='comission'>Comissão</option>";
+        } else if (select1.value === "No") {
+          select2.setAttribute('disabled', 'disabled');
+          select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
+        }
+    }
+  });
+  </script>
 </body>
 </html>

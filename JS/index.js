@@ -135,7 +135,7 @@ selectElement.addEventListener('change', function() {
   }
 });
 
-const radioInputs = document.querySelectorAll('input[name="confirm"]');
+const conRadioInputs = document.querySelectorAll('input[name="confirm"]');
 const hiddenField = document.getElementById('neoAutent');
 
 radioInputs.forEach(function(radioInput) {
@@ -184,3 +184,4 @@ function updateTextInput() {
     textInput.value = "R$ 8.050,00 (oito mil e cinquenta reais)";
   }
 }
+
