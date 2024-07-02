@@ -229,7 +229,7 @@
         <div class="form-group">
           <label for="message">Possui negociação a parte?</label>
           <p>Qualquer negociação a parte deve ser autorizada com comitê organizador</p>
-          <textarea id="message" name="message" rows="4" required></textarea>
+          <textarea id="message" name="message" rows="10"></textarea>
         </div>
 
         <div class="hidden-itens">
@@ -261,7 +261,8 @@
           <button type="submit">Submit</button>
         </div>
       </div>
-      
+      <div id="form-status"></div>
+      <div id="spinner" class="spinner" style="display: none;"></div>
     </form>
   </div>
   <script src="/ExpoTea.github.io/JS/index.js"></script>
@@ -306,6 +307,51 @@
         }
     }
   });
+  // Separate function to handle form submission
+async function handleFormSubmission(form) {
+  const formData = new FormData(form);
+  const statusDiv = document.getElementById('form-status');
+  const spinner = document.getElementById('spinner');
+  
+  const validationError = validateFormData(formData);
+  if (validationError) {
+      return { success: false, message: validationError };
+  }
+
+  spinner.style.display = 'block';
+  statusDiv.textContent = '';
+
+  try {
+      const response = await fetch(form.action, {
+          method: form.method,
+          body: formData
+      });
+
+      if (response.ok) {
+          return { success: true, message: 'Sua inscrição foi enviada. Obrigado por Responder!' };
+      } else {
+          const errorResponse = await response.json();
+          return { success: false, message: errorResponse.message || 'Sua inscrição não foi enviada. Aguarde e tente novamente. Caso a falha persista, entre em contato com o representante da ExpoTEA' };
+      }
+  } catch (error) {
+      return { success: false, message: 'Ocorreu um erro: ' + error.message };
+  } finally {
+      spinner.style.display = 'none';
+  }
+}
+
+// Event listener for form submission
+async function submitForm(event) {
+  event.preventDefault();
+  const form = event.target;
+  const result = await handleFormSubmission(form);
+  const statusDiv = document.getElementById('form-status');
+  statusDiv.textContent = result.message;
+  if (result.success) {
+      form.reset();
+  }
+}
+
   </script>
 </body>
 </html>
