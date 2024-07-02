@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExpoTEA</title>
+  <link rel="stylesheet" href="/CSS/index.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="/images/01.png" alt="">
+    </div>
+    <form id="multi-page-form">
+      <!--<div class="page active" id="page1">
+        <h2>Informações da Empresa</h2>
+        <div class="form-group">
+          <label for="name">Razão Social</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="fant">Nome Fantasia</label>
+          <input type="text" id="fant" name="fant" required>
+        </div>
+        <div class="form-group">
+          <label for="cnpj">CNPJ/CPF</label>
+          <input type="text" id="cnpj" name="cnpj" required>
+        </div>
+        <div class="form-group">
+          <label for="ccm">CCM</label>
+          <input type="text" id="ccm" name="ccm">
+        </div>
+        <div class="form-group">
+          <label for="endereco">Endereço Completo</label>
+          <input type="text" id="endereco" name="endereco"  required>
+        </div>
+        <div class="form-group">
+          <label for="fant">CEP</label>
+          <input type="text" id="cep" name="cep" required>
+        </div>
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <select name="estado" id="estado" required>
+            <option value="default">Selecione uma Opção</option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>          
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tel">Telefone</label>
+          <input type="tel" id="tel" name="tel" placeholder="(11)   1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" required>
+        </div>
+        <div class="form-group">
+          <label for="e-mail">E-mail</label>
+          <input type="email" id="e-mail" name="e-mail" required>
+        </div>
+        <div>
+          <p style="font-weight: 900;">Este é o mesmo e-mail do   Autentique?</p>
+          <input type="radio" name="confirm" id="yes" value="Sim">Sim
+          <input type="radio" name="confirm" id="no" value="Não">Não
+        </div>
+        <br>
+        <div class="form-group" id="neoAutent" style="display: none;">
+          <label for="autent">E-mail Autentique</label>
+          <input type="text" id="autent" name="autent" required>
+        </div>
+        <div class="form-group">
+          <label for="brindes">Concederá Brindes Personalizados   para a sacola do congresso?</label>
+          <input type="text" id="brindes" name="brindes" required>
+        </div>
+        <div class="form-group">
+          <button type="button" onclick="callMultipleFunctions()">Next</button>
+        </div>
+      </div>
+
+      <div class="page" id="page2">
+        <h2>Informações do Representante da Empresa</h2>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="tel" id="cpf" name="cpf" placeholder="012.345.678-90" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" required>
+        </div>
+        <div class="form-group">
+          <label for="rg">RG</label>
+          <input type="tel" id="rg" name="rg" placeholder="12.345.678-9" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" required>
+        </div>
+        <div class="form-group">
+          <label for="nacional">Nacionalidade</label>
+          <input type="text" id="nacional" name="nacional" required>
+        </div>
+        <div class="form-group">
+          <label for="civil">Estado Civil</label>
+          <select name="civil" id="civil" required>
+            <option value="">Escolha uma opção</option>
+            <option value="">Solteiro</option>
+            <option value="">Casado</option>
+            <option value="">Separado</option>
+            <option value="">Divorciado</option>
+            <option value="">Viúvo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="profiss">Profissão</label>
+          <input type="text" id="profiss" name="profiss" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Endereço</label>
+          <input type="text" id="address" name="address" required>
+        </div>
+        <div class="form-group">
+          <label for="cep1">CEP</label>
+          <input type="text" id="cep1" name="cep1" required>
+        </div>
+        <div class="form-group">
+          <label for="estado1">Estado</label>
+          <select name="estado1" id="estado1" required>
+            <option value="default">Selecione uma Opção</option>
+            <option value="AC">Acre (AC)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="AP">Amapá (AP)</option>
+            <option value="AM">Amazonas (AM)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+            <option value="ES">Espírito Santo (ES)</option>
+            <option value="GO">Goiás (GO)</option>
+            <option value="MA">Maranhão (MA)</option>
+            <option value="MT">Mato Grosso (MT)</option>
+            <option value="MS">Mato Grosso do Sul (MS)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="PA">Pará (PA)</option>
+            <option value="PB">Paraíba (PB)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="PI">Piauí (PI)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="RN">Rio Grande do Norte (RN)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="RO">Rondônia (RO)</option>
+            <option value="RR">Roraima (RR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="TO">Tocantins (TO)</option>          
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="emailPessoal">E-mail Pessoal</label>
+          <input type="email" id="pessoal" name="emailPessoal" required>
+        </div>
+        <div class="form-group">
+          <label for="telephone">Telefone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="(XX) XXXXX-XXXX" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required>
+        </div>
+
+        <div class="form-group">
+          <button type="button" onclick="previousPage()">Previous</button>
+          <br>
+          <br>
+          <button type="button" onclick="nextPage()">Next</button>
+        </div>
+      </div>-->
+
+      <div>
+        <h2>Informações do Estande e Pagamento</h2>
+        <div class="form-group">
+          <label for="estande">Estande Pretendido</label>
+          <input type="text" name="estande" id="estande">
+        </div>
+        <div class="form-group"><label for="cota">Cota Pretendida</label>
+          <select name="cota" id="cota" onchange="updateSecondSelect()">
+            <option value="default">Selecione uma Opção</option>
+            <option value="apoio">Apoio</option>
+            <option value="bronze">Bronze</option>
+            <option value="diamante">Diamante</option>
+            <option value="elite">Elite</option>
+            <option value="ilha">Ilha</option>
+            <option value="ouro">Ouro</option>
+            <option value="prata">Prata</option>
+            <option value="presidencial">Presidencial</option>
+            <option value="master">Presidencial Master</option>
+            <option value="vila">Vila</option>
+          </select>
+        </div>
+        <div class="form-group" id="foodRadio" style="display: none;">
+          <fieldset>
+            <legend>É Área Food?</legend>
+            <input type="radio" name="food" id="ja" value="Sim" onchange="updateSecondSelect()"> Sim
+            <input type="radio" name="food" id="nein" value="Não" onchange="updateSecondSelect()"> Não
+          </fieldset>
+        </div>
+        
+        <div class="form-group">
+          <label for="metragem">Metragem do Estande</label>
+          <select name="metragem" id="metragem" onchange="updateTextInput()">                    
+            
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="valor">Valor do Estande</label>
+          <input type="text" name="valor" id="valor" value="" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Possui negociação a parte?</label>
+          <p>Qualquer negociação a parte deve ser autorizada com comitê organizador</p>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <fieldset>
+            <legend>Forma de Pagamento</legend>
+            <label for="vista">Á vista</label>
+            <input type="radio" name=forma" id="vista" value="vista">
+            <label for="parcelado">Parcelado</label>
+            <input type="radio" name="forma" id="parcelado" value="parcelado">
+          </fieldset>
+        </div>
+
+
+        <div class="form-group">
+          <button type="button" onclick="previousPage()">Previous</button>
+          <br>
+          <br>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+  <script src="/JS/index.js"></script>
+</body>
+</html>
