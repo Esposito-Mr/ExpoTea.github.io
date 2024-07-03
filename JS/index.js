@@ -24,33 +24,6 @@ var currentPage = 1;
     }
 
     
-function validateForm() {
-    var nameInput = document.getElementById('name');
-    var fantasyInput = document.getElementById('fant');
-    var cnpjInput = document.getElementById('cnpj');
-    var enderecoInput = document.getElementById('endereco');
-    var cepInput = document.getElementById('cep');
-    var estadoInput = document.getElementById('estado');
-    var telInput = document.getElementById('tel');
-    var emailInput = document.getElementById('e-mail');
-    var brimdesInput = document.getElementById('brindes');
-
-    if (nameInput.value === '' || emailInput.value === '' || telInput.value === '' || fantasyInput.value === '' || cnpjInput.value === '' || enderecoInput.value === '' || estadoInput.value === '' || cepInput.value === '' || brimdesInput.value === '') {
-      alert('Por favor preencha todos os campos');
-      return false;
-    }
-
-    // Additional validation logic can be added here if needed
-
-    return true;
-  }
-
-function callMultipleFunctions() {
-    validateForm();
-    nextPage();
-  // Add more functions as needed
-}
-
 function updateSecondSelect() {
   var firstSelect = document.getElementById("cota");
   var radioInputs = document.getElementsByName("food");
@@ -185,3 +158,44 @@ function updateTextInput() {
   }
 }
 
+// Get references to the radio input and select tags
+const pagRadioInput = document.getElementsByName("forma");
+const select1 = document.getElementById("represent");
+const select2 = document.getElementById("pay");
+const divSel1 = document.getElementById("represent1");
+const divSel2 = document.getElementById("pay1");
+
+// Function to update select2 based on select1 value
+function updateSelect2() {
+  if (select1.value === "yah") {
+    select2.innerHTML = "<option value='comission'>Comissão</option>";
+  } else if (select1.value === "No") {
+    select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
+  } else {
+    select2.innerHTML = ""; // Clear options if no matching value
+  }
+}
+
+// Function to handle radio input changes
+function handleRadioChange() {
+  switch (this.value) {
+    case "vista":
+      select2.innerHTML = ""; // Clear the options in select2
+      divSel1.style.display = "none"; // Hide select1
+      divSel2.style.display = "none"; // Hide select2
+      break;
+    case "parcelado":
+      divSel1.style.display = "block"; // Show select1
+      divSel2.style.display = "block"; // Show select2
+      updateSelect2(); // Update select2 options based on select1 value
+      break;
+  }
+}
+
+// Add event listeners to the radio inputs
+Array.from(pagRadioInput).forEach(radio => {
+  radio.addEventListener("change", handleRadioChange);
+});
+
+// Add event listener to select1 to update select2 dynamically
+select1.addEventListener("change", updateSelect2);
