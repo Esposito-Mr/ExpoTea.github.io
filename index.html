@@ -265,53 +265,59 @@
   </div>
   <script src="/ExpoTea.github.io/JS/index.js"></script>
 
-  <script>
-      // Get references to the radio input and select tags
-    const pagRadioInput = document.getElementsByName("forma");
-    const select1 = document.getElementById("represent");
-    const select2 = document.getElementById("pay");
-    const divSel1 = document.getElementById("represent1");
-    const divSel2 = document.getElementById("pay1");
+<script>
+    // Get references to the radio input and select tags
+  const pagRadioInput = document.getElementsByName("forma");
+  const select1 = document.getElementById("represent");
+  const select2 = document.getElementById("pay");
+  const divSel1 = document.getElementById("represent1");
+  const divSel2 = document.getElementById("pay1");
   
-    // Add event listeners to the radio input
-    for (let i = 0; i < pagRadioInput.length; i++) {
-      pagRadioInput[i].addEventListener("change", function() {
-        if (this.value === "vista") {
-          select2.innerHTML = ""; // Clear the options in select2
-          divSel1.style.display = "none"; // Hide select1
-          divSel2.style.display = "none"; // Hide select2
-        } else if (this.value === "parcelado") {
-          // Insert options into select2 based on select1 value
-          if (select1.value === "yah") {
-            select2.innerHTML = "<option value='comission'>Comissão</option>";
-          } else if (select1.value === "No") {
-            select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
-          }
-          divSel1.style.display = "block"; // Show select1
-          divSel2.style.display = "block"; // Show select2
+  // Function to handle radio input changes
+  function handleRadioChange() {
+    switch (this.value) {
+      case "vista":
+        select2.innerHTML = ""; // Clear the options in select2
+        divSel1.style.display = "none"; // Hide select1
+        divSel2.style.display = "none"; // Hide select2
+        break;
+      case "parcelado":
+        // Insert options into select2 based on select1 value
+        if (select1.value === "yah") {
+          select2.innerHTML = "<option value='comission'>Comissão</option>";
+        } else if (select1.value === "No") {
+          select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
         }
-      });
+        divSel1.style.display = "block"; // Show select1
+        divSel2.style.display = "block"; // Show select2
+        break;
     }
-
-    const formulario = document.querySelector("#multi-page-form")
-    const submitButton = document.querySelector("#enviar")
-    const scriptURL = 'https://script.google.com/macros/s/    AKfycbzMwE-MoKa9CFPpYs8Q8cIMaN2XewCC_U54fyIdMa748TNFBem9OuVvBlYIRm12DTkiag/exec'
-
-    formulario.addEventListener('submit', e => {
-      submitButton.disabled = true
-      e.preventDefault()
-      let requestBody = new FormData(formulario)
-      fetch(scriptURL, { method: 'POST', body: requestBody})
-        .then(response => {
-          alert('Success!', response)
-          submitButton.disabled = false
-          })
-        .catch(error => {
-        alert('Error!', error.message)
-          submitButton.disabled = false
-        }
-        )
-      })
-  </script>
+  }
+  
+  // Add event listeners to the radio inputs
+  Array.from(pagRadioInput).forEach(radio => {
+    radio.addEventListener("change", handleRadioChange);
+  });
+  
+  
+  const formulario = document.querySelector("#multi-page-form")
+  const submitButton = document.querySelector("#enviar")
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzMwE-MoKa9CFPpYs8Q8cIMaN2XewCC_U54fyIdMa748TNFBem9OuVvBlYIRm12DTkiag/exec'
+   formulario.addEventListener('submit', e => {
+     submitButton.disabled = true
+     e.preventDefault()
+     let requestBody = new FormData(formulario)
+     fetch(scriptURL, { method: 'POST', body: requestBody})
+       .then(response => {
+         alert('Success!', response)
+         submitButton.disabled = false
+         })
+       .catch(error => {
+       alert('Error!', error.message)
+         submitButton.disabled = false
+       }
+       )
+     })
+</script>
 </body>
 </html>
