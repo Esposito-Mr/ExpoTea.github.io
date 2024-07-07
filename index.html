@@ -4,6 +4,8 @@
   <title>ExpoTEA</title>
   <link rel="stylesheet" href="/ExpoTea.github.io/CSS/index.css">
   <link rel="icon" type="image/x-icon" href="/ExpoTea.github.io/images/d698ac58-bc9b-42d3-ae6d-9f9678693f22.png">
+  <script src="https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"></script>
 </head>
 <body>
   <div class="container">
@@ -232,7 +234,7 @@
           <textarea id="message" name="message" rows="10"></textarea>
         </div>
 
-        <div class="hidden-itens">
+        <div class="hidden-itens" id="forma">
           <p style="font-weight: 900;">Forma de Pagamento</p>
           <input type="radio" name="forma" id="vista" value="vista"> Á vista
           <input type="radio" name="forma" id="parcelado" value="parcelado"> Parcelado
@@ -264,26 +266,99 @@
     </form>
   </div>
   <script src="/ExpoTea.github.io/JS/index.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqNzTrLsTgn5RWYWek7f0KLR96GGwQMs8",
+      authDomain: "expotea.firebaseapp.com",
+      projectId: "expotea",
+      storageBucket: "expotea.appspot.com",
+      messagingSenderId: "175892241557",
+      appId: "1:175892241557:web:69d7915ce54944f2af0f9c"
+    };
+  
+      document.getElementById('multi-page-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form from submitting the traditional way
 
-<script>
-   const formulario = document.querySelector("#multi-page-form")
-  const submitButton = document.querySelector("#enviar")
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzMwE-MoKa9CFPpYs8Q8cIMaN2XewCC_U54fyIdMa748TNFBem9OuVvBlYIRm12DTkiag/exec'
-   formulario.addEventListener('submit', e => {
-     submitButton.disabled = true
-     e.preventDefault()
-     let requestBody = new FormData(formulario)
-     fetch(scriptURL, { method: 'POST', body: requestBody})
-       .then(response => {
-         alert('Success!', response)
-         submitButton.disabled = false
-         })
-       .catch(error => {
-       alert('Error!', error.message)
-         submitButton.disabled = false
-       }
-       )
-     })
-</script>
+      const name = document.getElementById('name').value;
+      const fantasy = document.getElementById('fant').value;
+      const cadEmp = document.getElementById('cnpj').value;
+      const municipy = document.getElementById('ccm').value;
+      const route = document.getElementById('endereco').value;
+      const zip = document.getElementById('cep').value;
+      const state = document.getElementById('estado').value;
+      const number = document.getElementById('tel').value;
+      const email = document.getElementById('e-mail').value;
+      const autentique = document.getElementById('autent').value;
+      const gift = document.getElementById('brindes').value;
+      const nome = document.getElementById('nome').value;
+      const cadPes = document.getElementById('cpf').value;
+      const register = document.getElementById('rg').value;
+      const country = document.getElementById('nacional').value;
+      const maritial = document.getElementById('civil').value;
+      const job = document.getElementById('profiss').value;
+      const address = document.getElementById('address').value;
+      const cep = document.getElementById('cep1').value;
+      const estad = document.getElementById('estado1').value;
+      const pessMail = document.getElementById('pessoal').value;
+      const cel = document.getElementById('telephone').value;
+      const comida = document.getElementById('foodRadio').value;
+      const stand = document.getElementById('metragem').value;
+      const value = document.getElementById('valor').value;
+      const mensagem = document.getElementById('message').value;
+      const pag = document.getElementById('forma').value;
+      const representante = document.getElementById('represent').value;
+      const payment = document.getElementById('pay').value;
+
+
+      db.collection('formData').add({
+          nome: nome,
+          nome_fantasia: fantasy,
+          cadastro_empresa: cadEmp,
+          cadastro_municipal: municipy,
+          endereco_empresa: route,
+          cep_empresa: zip,
+          estado_empresa: state,
+          telefone_empresa: number,
+          email_empresa: email,
+          email_autentique: autentique,
+          brindes: gift,
+          nome_pessoal: nome,
+          cpf: cadPes,
+          rg: register,
+          nacionalidade: country,
+          estado_civil: maritial,
+          profissão: job,
+          endereco_pessoal: address,
+          cep_pessoal: cep,
+          estado_pessoal: estad,
+          email_pessoal: pessMail,
+          telefone_pessoal: cel,
+          area_food: comida,
+          estande_escolhido: stand,
+          valor_estande: value,
+          acordo: mensagem,
+          forma_pagamento: pag,
+          representante: representante,
+          valor_pagamento: payment,
+
+      }).then(() => {
+          alert('Form data submitted successfully!');
+      }).catch((error) => {
+          console.error('Error submitting form data: ', error);
+          alert('Error submitting form data.');
+      });
+    });
+
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
+  </script>
 </body>
 </html>
