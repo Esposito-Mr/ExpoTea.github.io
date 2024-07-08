@@ -13,7 +13,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/fireba
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    document.getElementById('multi-page-form').addEventListener('submit', async function(e) {
+    /* document.getElementById('multi-page-form').addEventListener('submit', async function(e) {
       e.preventDefault();
 
       const formData = {
@@ -55,4 +55,4 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/fireba
         console.error('Error submitting form data: ', error);
         alert('Error submitting form data.');
       }
-    });
+    });*/
