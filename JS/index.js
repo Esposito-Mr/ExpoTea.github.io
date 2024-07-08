@@ -1,22 +1,3 @@
-const formulario = document.querySelector("#multi-page-form")
-const submitButton = document.querySelector("#enviar")
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzMwE-MoKa9CFPpYs8Q8cIMaN2XewCC_U54fyIdMa748TNFBem9OuVvBlYIRm12DTkiag/exec'
- formulario.addEventListener('submit', e => {
-   submitButton.disabled = true
-   e.preventDefault()
-   let requestBody = new FormData(formulario)
-   fetch(scriptURL, { method: 'POST', body: requestBody})
-     .then(response => {
-       alert('Success!', response)
-       submitButton.disabled = false
-       })
-     .catch(error => {
-     alert('Error!', error.message)
-       submitButton.disabled = false
-     }
-     )
-  })
-
 var currentPage = 1;
     var form = document.getElementById('multi-page-form');
     var pages = form.getElementsByClassName('page');
