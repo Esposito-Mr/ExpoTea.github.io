@@ -52,34 +52,25 @@ function updateSecondSelect() {
       secondSelect.innerHTML += "<option value='bronzeFoodm2'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
     }
   } if (selectedValue === "diamante") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='diamantem2'>4m x 5m [20m² de área] (4 metros de Frente)</option>";
     } if (selectedValue === "elite") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='elitem2'>5m x 10m [50m² de área] (5 metros de Frente)</option>";
     } if (selectedValue === "ilha") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='ilham2'>10m x 10m [100m² de área] (10 metros de Frente)</option>";
     } if (selectedValue === "presidencial") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='presidencialm2'>5m x 5m [15m² de área] (5 metros de Frente)</option>";
     } if (selectedValue === "master") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='masterm2'>6.5m x 5m [32.5m² de área] (6.5 metros de Frente)</option>";
     } else if (selectedValue === "prata") {
     if (answer === "Não") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='pratam2'>4m x 3m [12m² de área] (3 metros de Frente)</option>";
     } else if (answer === "Sim") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='prataFoodm2'>2.5m x 2.5m [6.25m² de área] (2.5 metros de Frente)</option>";
     }
   } else if (selectedValue === "ouro") {
     if (answer === "Não") {
-      secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='ourom2'>3m x 5m [15m² de área] (3 metros de Frente)</option>";
     } else if (answer === "Sim") {
-      secondSelect.removeAttribute('disabled');
       secondSelect.innerHTML += "<option value='ouroFoodm21'>4.5m x 2.5m [11.25m² de área] (4.5 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='ouroFoodm22'>4m x 3m [12² de área] (4 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='ouroFoodm23'>4.5m x 2.5m - Área Food Truck [11.25m² de área] (4.5 metros de Frente)</option>";
