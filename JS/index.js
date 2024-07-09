@@ -181,6 +181,7 @@ function handleRadioChange() {
       updateSelect2(); // Update select2 options based on select1 value
       break;
   }
+  updateTextInput();
 }
 
 // Add event listeners to the radio inputs
