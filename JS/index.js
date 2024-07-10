@@ -46,43 +46,43 @@ function updateSecondSelect() {
   if (selectedValue === "bronze") {
     if (answer === "Não") {
       secondSelect.setAttribute('disabled', 'disabled');
-      secondSelect.innerHTML += "<option value='bronzem2'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
+      secondSelect.innerHTML += "<option value='3m x 2m [6m² de área]'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
     } else if (answer === "Sim") {
       secondSelect.setAttribute('disabled', 'disabled');
-      secondSelect.innerHTML += "<option value='bronzeFoodm2'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
+      secondSelect.innerHTML += "<option value='2m x 2m [4m² de área]'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
     }
   } if (selectedValue === "diamante") {
-      secondSelect.innerHTML += "<option value='diamantem2'>4m x 5m [20m² de área] (4 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='4m x 5m [20m² de área]'>4m x 5m [20m² de área] (4 metros de Frente)</option>";
     } if (selectedValue === "elite") {
-      secondSelect.innerHTML += "<option value='elitem2'>5m x 10m [50m² de área] (5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='5m x 10m [50m² de área]'>5m x 10m [50m² de área] (5 metros de Frente)</option>";
     } if (selectedValue === "ilha") {
-      secondSelect.innerHTML += "<option value='ilham2'>10m x 10m [100m² de área] (10 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='10m x 10m [100m² de área]'>10m x 10m [100m² de área] (10 metros de Frente)</option>";
     } if (selectedValue === "presidencial") {
-      secondSelect.innerHTML += "<option value='presidencialm2'>5m x 5m [15m² de área] (5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='5m x 5m [15m² de área]'>5m x 5m [15m² de área] (5 metros de Frente)</option>";
     } if (selectedValue === "master") {
-      secondSelect.innerHTML += "<option value='masterm2'>6.5m x 5m [32.5m² de área] (6.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='6.5m x 5m [32.5m² de área]'>6.5m x 5m [32.5m² de área] (6.5 metros de Frente)</option>";
     } else if (selectedValue === "prata") {
     if (answer === "Não") {
-      secondSelect.innerHTML += "<option value='pratam2'>4m x 3m [12m² de área] (3 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='4m x 3m [12m² de área]'>4m x 3m [12m² de área] (3 metros de Frente)</option>";
     } else if (answer === "Sim") {
-      secondSelect.innerHTML += "<option value='prataFoodm2'>2.5m x 2.5m [6.25m² de área] (2.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='2.5m x 2.5m [6.25m² de área]'>2.5m x 2.5m [6.25m² de área] (2.5 metros de Frente)</option>";
     }
   } else if (selectedValue === "ouro") {
     if (answer === "Não") {
-      secondSelect.innerHTML += "<option value='ourom2'>3m x 5m [15m² de área] (3 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='3m x 5m [15m² de área]'>3m x 5m [15m² de área] (3 metros de Frente)</option>";
     } else if (answer === "Sim") {
-      secondSelect.innerHTML += "<option value='ouroFoodm21'>4.5m x 2.5m [11.25m² de área] (4.5 metros de Frente)</option>";
-      secondSelect.innerHTML += "<option value='ouroFoodm22'>4m x 3m [12² de área] (4 metros de Frente)</option>";
-      secondSelect.innerHTML += "<option value='ouroFoodm23'>4.5m x 2.5m - Área Food Truck [11.25m² de área] (4.5 metros de Frente)</option>";
-      secondSelect.innerHTML += "<option value='ouroFoodm24'>2.5m x 2.5m - Área Food Truck [6.25m² de área] (2.5 metros de Frente)</option>";
-      secondSelect.innerHTML += "<option value='ouroFoodm25'>3m x 5m - Área Food Truck [15m² de área] (3 metros de Frente)</option>";
-      secondSelect.innerHTML += "<option value='ouroFoodm26'>4.5m x 2m - Área Food Truck [9m² de área] (4.5 metros de Frente)</option>";
-      secondSelect.innerHTML += "<option value='ouroFoodm27'>2.25m x 7m - Área Food Truck [15.75m² de área] (2.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='4.5m x 2.5m [11.25m² de área]'>4.5m x 2.5m [11.25m² de área] (4.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='4m x 3m [12² de área]'>4m x 3m [12² de área] (4 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='4.5m x 2.5m - Área Food Truck [11.25m² de área]'>4.5m x 2.5m - Área Food Truck [11.25m² de área] (4.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='2.5m x 2.5m - Área Food Truck [6.25m² de área]'>2.5m x 2.5m - Área Food Truck [6.25m² de área] (2.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='3m x 5m - Área Food Truck [15m² de área]'>3m x 5m - Área Food Truck [15m² de área] (3 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='4.5m x 2m - Área Food Truck [9m² de área]'>4.5m x 2m - Área Food Truck [9m² de área] (4.5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='2.25m x 7m - Área Food Truck [15.75m² de área]'>2.25m x 7m - Área Food Truck [15.75m² de área] (2.5 metros de Frente)</option>";
     }
   }
 /*   if (selectedValue === "vila") {
     secondSelect.setAttribute('disabled', 'disabled');
-    secondSelect.innerHTML += "<option value='bronzem2'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
+    secondSelect.innerHTML += "<option value='3m x 2m [6m² de área]'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
   } */
  // Trigger update for the text input
   updateTextInput();
@@ -118,33 +118,33 @@ function updateTextInput() {
   var selectedValue = firstSelect.value;
 
   // Update the text input based on the selected value
-  if (selectedValue === "bronzem2") {
+  if (selectedValue === "3m x 2m [6m² de área]") {
     textInput.value = "R$ 11.155,00 (onze mil, cento e quinze reais)";
-  } else if (selectedValue === "bronzeFoodm2") {
+  } else if (selectedValue === "2m x 2m [4m² de área]") {
     textInput.value = "R$ 3.680,00 (onze mil, cento e quinze reais)";
-  } else if (selectedValue === "pratam2") {
+  } else if (selectedValue === "4m x 3m [12m² de área]") {
     textInput.value = "R$ 20.355,00 (vinte mil, trezentos e cinquenta e cinco reais)";
-  } else if (selectedValue === "prataFoodm2") {
+  } else if (selectedValue === "2.5m x 2.5m [6.25m² de área]") {
     textInput.value = "R$ 4.600,00 (quatro mil, e seiscentos reais)";
-  } else if (selectedValue === "diamantem2") {
+  } else if (selectedValue === "4m x 5m [20m² de área]") {
     textInput.value = "R$ 34.558,00 (trinta e quatro mil, quinhetos e cinquenta e oito reais)";
-  } else if (selectedValue === "presidencialm2") {
+  } else if (selectedValue === "5m x 5m [15m² de área]") {
     textInput.value = "R$ 42.608,00 (quarenta e dois mil, seiscentos e oito reais)";
-  } else if (selectedValue === "masterm2") {
+  } else if (selectedValue === "6.5m x 5m [32.5m² de área]") {
     textInput.value = "R$ 56.810,00 (cinquenta e seis mil, oitocentos e dez reais)";
-  } else if (selectedValue === "elitem2") {
+  } else if (selectedValue === "5m x 10m [50m² de área]") {
     textInput.value = "R$ 77.913,00 (setenta e sete mil, novecentos e treze reais)";
-  } else if (selectedValue === "ilham2") {
+  } else if (selectedValue === "10m x 10m [100m² de área]") {
     textInput.value = "R$ 141.163,00 (cento e quarenta e um mil, cento e sessenta e três reais)";
-  } else if (selectedValue === "ourom2") {
+  } else if (selectedValue === "3m x 5m [15m² de área]") {
     textInput.value = "R$ 26.105,00 (vinte e seis mil, cento e cinco reais)";
-  } else if (selectedValue === "ourom21" || selectedValue === "ourom22") {
+  } else if (selectedValue === "4.5m x 2.5m [11.25m² de área]" || selectedValue === "4m x 3m [12² de área]") {
     textInput.value = "R$ 10.120,00 (dez mil, cento e vinte reais)";
-  } else if (selectedValue === "ourom23" || selectedValue === "ourom25" || selectedValue === "ourom27") {
+  } else if (selectedValue === "4.5m x 2.5m - Área Food Truck [11.25m² de área]" || selectedValue === "3m x 5m - Área Food Truck [15m² de área]" || selectedValue === "2.25m x 7m - Área Food Truck [15.75m² de área]") {
     textInput.value = "R$ 9.200,00 (nove mil e duzentos reais)";
-  } else if (selectedValue === "ourom24") {
+  } else if (selectedValue === "2.5m x 2.5m - Área Food Truck [6.25m² de área]") {
     textInput.value = "R$ 6.900,00 (seis mil e novecentos reais)";
-  } else if (selectedValue === "ourom26") {
+  } else if (selectedValue === "4.5m x 2m - Área Food Truck [9m² de área]") {
     textInput.value = "R$ 8.050,00 (oito mil e cinquenta reais)";
   }
 }
