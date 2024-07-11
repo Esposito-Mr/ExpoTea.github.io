@@ -184,9 +184,9 @@ const priceMap = {
 };
 
 function updateTextInput() {
-  const meticSelect = document.getElementById("metragem");
+  const metricSelect = document.getElementById("metragem");
   const textInput = document.getElementById("valor");
-  const selectedValue = meticSelect.value;
+  const selectedValue = metricSelect.value;
 
   // Check if the selected value exists in the price map
   if (priceMap.hasOwnProperty(selectedValue)) {
@@ -202,42 +202,34 @@ const pagRadioInput = document.getElementsByName("forma");
 const select2 = document.getElementById("pay");
 const divSel2 = document.getElementById("pay1");
 
-// Function to update select2 based on select1 value
-function updateSelect2() {
-  if (select1.value === "yah") {
-    select2.innerHTML = "<option value='comission'>Comissão</option>";
-  } else if (select1.value === "No") {
-    select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
-  } else {
-    select2.innerHTML = ""; // Clear options if no matching value
-  }
-}
-
 // Function to handle radio input changes
 function handleRadioChange() {
-  var radioInputs = document.getElementsByName("payment");
-  var selectedValue = "";
-
-  // Find the selected radio input value
-  for (var i = 0; i < radioInputs.length; i++) {
-    if (radioInputs[i].checked) {
-      selectedValue = radioInputs[i].value;
+  var originalValue = document.getElementById("metragem").value;
+  var discountedValue = calculateDiscount(originalValue, 10);
+  switch (this.value) {
+    case "vista":
+      select2.innerHTML = ""; // Clear the options in select2
+      divSel1.style.display = "none"; // Hide select1
+      divSel2.style.display = "none"; // Hide select2
+      select2.innerHTML += "<option value='" + discountedValue + "'>" + discountedValue + "</option>";
       break;
-    }
+    case "parcelado":
+      divSel1.style.display = "block"; // Show select1
+      divSel2.style.display = "block"; // Show select2
+      select2.innerHTML += "<option value='1+5 (6 total)'>1+5 (6 total)</option>";
+      updateSelect2(); // Update select2 options based on select1 value
+      break;
   }
-
-  // Clear existing options
-  select2.innerHTML = "";
-
-  // Add options based on the selected value
-  if (selectedValue === "vista") {
-    var originalValue = document.getElementById("metragem").value;
-    var discountedValue = calculateDiscount(originalValue, 10);
-    select2.innerHTML += "<option value='" + discountedValue + "'>" + discountedValue + "</option>";
-  } else if (selectedValue === "parcelado") {
-    select2.innerHTML += "<option value='1+5 (6 total)'>1+5 (6 total)</option>";
-  }
+  updateTextInput();
 }
+
+// Add event listeners to the radio inputs
+Array.from(pagRadioInput).forEach(radio => {
+  radio.addEventListener("change", handleRadioChange);
+});
+
+// Add event listener to select1 to update select2 dynamically
+select1.addEventListener("change", updateSelect2);
 
 function calculateDiscount(value, percentage) {
   var originalValue = parseFloat(value);
@@ -255,7 +247,6 @@ var form = document.getElementById('multi-page-form');
 form.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the form from being submitted
 
-  var select2 = document.getElementById("select2");
   var selectedValue = select2.value;
   var paymentMethod = "";
 
