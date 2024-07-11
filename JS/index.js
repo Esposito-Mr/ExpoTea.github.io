@@ -216,7 +216,6 @@ function updateSelect2() {
 // Function to handle radio input changes
 function handleRadioChange() {
   var radioInputs = document.getElementsByName("payment");
-  var select2 = document.getElementById("select2");
   var selectedValue = "";
 
   // Find the selected radio input value
@@ -226,6 +225,9 @@ function handleRadioChange() {
       break;
     }
   }
+
+  // Clear existing options
+  select2.innerHTML = "";
 
   // Add options based on the selected value
   if (selectedValue === "vista") {
