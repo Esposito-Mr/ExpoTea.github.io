@@ -112,111 +112,72 @@ conRadioInputs.forEach(function(conRadioInputs) {
   });
 });
 
-const priceMap = {
-  "3m x 2m [6m² de área]": {
-    price: 11155,
-    text: "R$ 11.155,00 (onze mil, cento e quinze reais)"
-  },
-  "2m x 2m [4m² de área]": {
-    price: 3680,
-    text: "R$ 3.680,00 (três mil, seiscentos e oitenta reais)"
-  },
-  "4m x 3m [12m² de área]": {
-    price: 20355,
-    text: "R$ 20.355,00 (vinte mil, trezentos e cinquenta e cinco reais)"
-  },
-  "2.5m x 2.5m [6.25m² de área]": {
-    price: 4600,
-    text: "R$ 4.600,00 (quatro mil e seiscentos reais)"
-  },
-  "4m x 5m [20m² de área]": {
-    price: 34558,
-    text: "R$ 34.558,00 (trinta e quatro mil, quinhentos e cinquenta e oito reais)"
-  },
-  "5m x 5m [15m² de área]": {
-    price: 42608,
-    text: "R$ 42.608,00 (quarenta e dois mil, seiscentos e oito reais)"
-  },
-  "6.5m x 5m [32.5m² de área]": {
-    price: 56810,
-    text: "R$ 56.810,00 (cinquenta e seis mil, oitocentos e dez reais)"
-  },
-  "5m x 10m [50m² de área]": {
-    price: 77913,
-    text: "R$ 77.913,00 (setenta e sete mil, novecentos e treze reais)"
-  },
-  "10m x 10m [100m² de área]": {
-    price: 141163,
-    text: "R$ 141.163,00 (cento e quarenta e um mil, cento e sessenta e três reais)"
-  },
-  "3m x 5m [15m² de área]": {
-    price: 26105,
-    text: "R$ 26.105,00 (vinte e seis mil, cento e cinco reais)"
-  },
-  "4.5m x 2.5m [11.25m² de área]": {
-    price: 10120,
-    text: "R$ 10.120,00 (dez mil, cento e vinte reais)"
-  },
-  "4m x 3m [12² de área]": {
-    price: 10120,
-    text: "R$ 10.120,00 (dez mil, cento e vinte reais)"
-  },
-  "4.5m x 2.5m - Área Food Truck [11.25m² de área]": {
-    price: 9200,
-    text: "R$ 9.200,00 (nove mil e duzentos reais)"
-  },
-  "3m x 5m - Área Food Truck [15m² de área]": {
-    price: 9200,
-    text: "R$ 9.200,00 (nove mil e duzentos reais)"
-  },
-  "2.25m x 7m - Área Food Truck [15.75m² de área]": {
-    price: 9200,
-    text: "R$ 9.200,00 (nove mil e duzentos reais)"
-  },
-  "2.5m x 2.5m - Área Food Truck [6.25m² de área]": {
-    price: 6900,
-    text: "R$ 6.900,00 (seis mil e novecentos reais)"
-  },
-  "4.5m x 2m - Área Food Truck [9m² de área]": {
-    price: 8050,
-    text: "R$ 8.050,00 (oito mil e cinquenta reais)"
-  }
-};
-
 function updateTextInput() {
-  const metricSelect = document.getElementById("metragem");
-  const textInput = document.getElementById("valor");
-  const selectedValue = metricSelect.value;
+  var firstSelect = document.getElementById("metragem");
+  var textInput = document.getElementById("valor");
+  var selectedValue = firstSelect.value;
 
-  // Check if the selected value exists in the price map
-  if (priceMap.hasOwnProperty(selectedValue)) {
-    const originalText = priceMap[selectedValue].text;
-    textInput.value = originalText;
-  } else {
-    textInput.value = ""; // Reset the text input if the selected value is not found
+  // Update the text input based on the selected value
+  if (selectedValue === "3m x 2m [6m² de área]") {
+    textInput.value = "R$ 11.155,00 (onze mil, cento e quinze reais)";
+  } else if (selectedValue === "2m x 2m [4m² de área]") {
+    textInput.value = "R$ 3.680,00 (onze mil, cento e quinze reais)";
+  } else if (selectedValue === "4m x 3m [12m² de área]") {
+    textInput.value = "R$ 20.355,00 (vinte mil, trezentos e cinquenta e cinco reais)";
+  } else if (selectedValue === "2.5m x 2.5m [6.25m² de área]") {
+    textInput.value = "R$ 4.600,00 (quatro mil, e seiscentos reais)";
+  } else if (selectedValue === "4m x 5m [20m² de área]") {
+    textInput.value = "R$ 34.558,00 (trinta e quatro mil, quinhetos e cinquenta e oito reais)";
+  } else if (selectedValue === "5m x 5m [15m² de área]") {
+    textInput.value = "R$ 42.608,00 (quarenta e dois mil, seiscentos e oito reais)";
+  } else if (selectedValue === "6.5m x 5m [32.5m² de área]") {
+    textInput.value = "R$ 56.810,00 (cinquenta e seis mil, oitocentos e dez reais)";
+  } else if (selectedValue === "5m x 10m [50m² de área]") {
+    textInput.value = "R$ 77.913,00 (setenta e sete mil, novecentos e treze reais)";
+  } else if (selectedValue === "10m x 10m [100m² de área]") {
+    textInput.value = "R$ 141.163,00 (cento e quarenta e um mil, cento e sessenta e três reais)";
+  } else if (selectedValue === "3m x 5m [15m² de área]") {
+    textInput.value = "R$ 26.105,00 (vinte e seis mil, cento e cinco reais)";
+  } else if (selectedValue === "4.5m x 2.5m [11.25m² de área]" || selectedValue === "4m x 3m [12² de área]") {
+    textInput.value = "R$ 10.120,00 (dez mil, cento e vinte reais)";
+  } else if (selectedValue === "4.5m x 2.5m - Área Food Truck [11.25m² de área]" || selectedValue === "3m x 5m - Área Food Truck [15m² de área]" || selectedValue === "2.25m x 7m - Área Food Truck [15.75m² de área]") {
+    textInput.value = "R$ 9.200,00 (nove mil e duzentos reais)";
+  } else if (selectedValue === "2.5m x 2.5m - Área Food Truck [6.25m² de área]") {
+    textInput.value = "R$ 6.900,00 (seis mil e novecentos reais)";
+  } else if (selectedValue === "4.5m x 2m - Área Food Truck [9m² de área]") {
+    textInput.value = "R$ 8.050,00 (oito mil e cinquenta reais)";
   }
 }
 
 // Get references to the radio input and select tags
 const pagRadioInput = document.getElementsByName("forma");
+const select1 = document.getElementById("represent");
 const select2 = document.getElementById("pay");
+const divSel1 = document.getElementById("represent1");
 const divSel2 = document.getElementById("pay1");
+
+// Function to update select2 based on select1 value
+function updateSelect2() {
+  if (select1.value === "yah") {
+    select2.innerHTML = "<option value='comission'>Comissão</option>";
+  } else if (select1.value === "No") {
+    select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
+  } else {
+    select2.innerHTML = ""; // Clear options if no matching value
+  }
+}
 
 // Function to handle radio input changes
 function handleRadioChange() {
-  var originalValue = document.getElementById("metragem").value;
-  var discountedValue = calculateDiscount(originalValue, 10);
   switch (this.value) {
     case "vista":
       select2.innerHTML = ""; // Clear the options in select2
       divSel1.style.display = "none"; // Hide select1
       divSel2.style.display = "none"; // Hide select2
-      select2.innerHTML += "<option value='" + discountedValue + "'>" + discountedValue + "</option>";
       break;
     case "parcelado":
       divSel1.style.display = "block"; // Show select1
       divSel2.style.display = "block"; // Show select2
-      select2.innerHTML += "<option value='1+5 (6 total)'>1+5 (6 total)</option>";
       updateSelect2(); // Update select2 options based on select1 value
       break;
   }
@@ -230,51 +191,3 @@ Array.from(pagRadioInput).forEach(radio => {
 
 // Add event listener to select1 to update select2 dynamically
 select1.addEventListener("change", updateSelect2);
-
-function calculateDiscount(value, percentage) {
-  var originalValue = parseFloat(value);
-  var discount = originalValue * (percentage / 100);
-  var discountedValue = originalValue - discount;
-  return discountedValue.toFixed(2);
-}
-
-// Add event listeners to the radio inputs
-Array.from(pagRadioInput).forEach(radio => {
-  radio.addEventListener("change", handleRadioChange);
-});
-
-var form = document.getElementById('multi-page-form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the form from being submitted
-
-  var selectedValue = select2.value;
-  var paymentMethod = "";
-
-  var radioInputs = document.getElementsByName("payment");
-  for (var i = 0; i < radioInputs.length; i++) {
-    if (radioInputs[i].checked) {
-      paymentMethod = radioInputs[i].value;
-      break;
-    }
-  }
-
-  var dueDate = new Date();
-  dueDate.setDate(dueDate.getDate() + 7);
-  var dueDateString = formatDate(dueDate);
-
-  if (paymentMethod === "vista") {
-    select2.value = "Boleto Bancário em 1 parcela sendo o pagamento para " + dueDateString;
-  } else if (paymentMethod === "parcelado") {
-    select2.value = "Boleto Bancário em 6 parcelas sendo a primeira para " + dueDateString + " e as demais subsequentes até o mês de dezembro de 2024";
-  }
-
-  // Now you can proceed with sending the form data to the database
-  // ...
-});
-
-function formatDate(date) {
-  var day = date.getDate();
-  var month = date.getMonth() + 1;
-  var year = date.getFullYear();
-  return day + "/" + month + "/" + year;
-}
