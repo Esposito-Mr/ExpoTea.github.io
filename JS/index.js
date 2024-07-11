@@ -183,9 +183,9 @@ const priceMap = {
 };
 
 function updateTextInput() {
-  const firstSelect = document.getElementById("metragem");
+  const meticSelect = document.getElementById("metragem");
   const textInput = document.getElementById("valor");
-  const selectedValue = firstSelect.value;
+  const selectedValue = meticSelect.value;
 
   // Check if the selected value exists in the price map
   if (priceMap.hasOwnProperty(selectedValue)) {
@@ -209,13 +209,11 @@ function handleRadioChange() {
   switch (this.value) {
     case "vista":
       select2.innerHTML = ""; // Clear the options in select2
-      const originalPrice = priceMap[firstSelect.value].price;
+      const originalPrice = priceMap[meticSelect.value].price;
       const modifiedPrice = originalPrice - (originalPrice * 0.1); // Reduce the price by 10%
       select2.innerHTML = `<option value="only" id="originalField">${originalField.textContent}</option>`;
       break;
     case "parcelado":
-      divSel1.style.display = "block"; // Show select1
-      divSel2.style.display = "block"; // Show select2
       select2.innerHTML = `<option value="padrao" id="originalField2">${originalField2.textContent}</option>`;
       break;
   }
