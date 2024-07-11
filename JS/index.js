@@ -267,6 +267,3 @@ form.addEventListener("submit", (event) => {
 Array.from(pagRadioInput).forEach(radio => {
   radio.addEventListener("change", handleRadioChange);
 });
-
-// Add event listener to select1 to update select2 dynamically
-select1.addEventListener("change", updateSelect2);
