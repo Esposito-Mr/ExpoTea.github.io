@@ -79,10 +79,11 @@ function updateSecondSelect() {
       secondSelect.innerHTML += "<option value='4.5m x 2m - Área Food Truck [9m² de área]'>4.5m x 2m - Área Food Truck [9m² de área] (4.5 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='2.25m x 7m - Área Food Truck [15.75m² de área]'>2.25m x 7m - Área Food Truck [15.75m² de área] (2.5 metros de Frente)</option>";
     }
-  } else if (selectedValue === "vila") {
-    secondSelect.setAttribute('disabled', 'disabled');
-    secondSelect.innerHTML += "<option value='2m x 2m [4m² de área]'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
   }
+/*   if (selectedValue === "vila") {
+    secondSelect.setAttribute('disabled', 'disabled');
+    secondSelect.innerHTML += "<option value='3m x 2m [6m² de área]'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
+  } */
  // Trigger update for the text input
   updateTextInput();
 }
@@ -201,69 +202,89 @@ const pagRadioInput = document.getElementsByName("forma");
 const select2 = document.getElementById("pay");
 const divSel2 = document.getElementById("pay1");
 
+// Function to update select2 based on select1 value
+function updateSelect2() {
+  if (select1.value === "yah") {
+    select2.innerHTML = "<option value='comission'>Comissão</option>";
+  } else if (select1.value === "No") {
+    select2.innerHTML = "<option value='padrao'>1 + 5 Parcelas</option>";
+  } else {
+    select2.innerHTML = ""; // Clear options if no matching value
+  }
+}
+
 // Function to handle radio input changes
 function handleRadioChange() {
-  const originalField = document.getElementById("originalField");
-  const originalField2 = document.getElementById("originalField2");
+  var radioInputs = document.getElementsByName("payment");
+  var select2 = document.getElementById("select2");
+  var selectedValue = "";
 
-  switch (this.value) {
-    case "vista":
-      select2.innerHTML = ""; // Clear the options in select2
-      const originalPrice = priceMap[meticSelect.value].price;
-      const modifiedPrice = originalPrice - (originalPrice * 0.1); // Reduce the price by 10%
-      select2.innerHTML = `<option value="only" id="originalField">${originalField.textContent}</option>`;
+  // Find the selected radio input value
+  for (var i = 0; i < radioInputs.length; i++) {
+    if (radioInputs[i].checked) {
+      selectedValue = radioInputs[i].value;
       break;
-    case "parcelado":
-      select2.innerHTML = `<option value="padrao" id="originalField2">${originalField2.textContent}</option>`;
-      break;
-  }
-  updateTextInput();
-}
-
-function modifyField() {
-  const myField = document.getElementById("originalField2") && document.getElementById("originalField"); // Substitua "originalField" pelo ID real do campo
-
-
-  const today = new Date();
-  const firstDueDate = new Date(today); // Data da primeira parcela é hoje
-
-  // Define a primeira parcela para o próximo dia útil (exceto sábado e domingo)
-  while (firstDueDate.getDay() === 0 || firstDueDate.getDay() === 6) {
-    firstDueDate.setDate(firstDueDate.getDate() + 1);
+    }
   }
 
-  // Add seven days to the first installment date
-  firstDueDate.setDate(firstDueDate.getDate() + 7);
+  // Clear existing options
+  select2.innerHTML = "";
 
-  // Formata a data para o formato dd/mm/aaaa
-  const formattedFirstDueDate = `${firstDueDate.getDate().toString().padStart(2, '0')}/${(firstDueDate.getMonth() + 1).toString().padStart(2, '0')}/${firstDueDate.getFullYear()}`;
-
-  // Cálculo das parcelas subsequentes (até dezembro de 2024)
-  let dueDates = [formattedFirstDueDate];
-  for (let i = 1; i < 6; i++) {
-    const nextDueDate = new Date(firstDueDate);
-    nextDueDate.setMonth(nextDueDate.getMonth() + i);
-    if (nextDueDate.getMonth() > 11) break; // Para em dezembro
-    const formattedNextDueDate = `${nextDueDate.getDate().toString().padStart(2, '0')}/${(nextDueDate.getMonth() + 1).toString().padStart(2, '0')}/${nextDueDate.getFullYear()}`;
-    dueDates.push(formattedNextDueDate);
-  }
-  const dueDatesString = dueDates.join(', ');
-  
-
-  // Monta a string final com a data dinâmica
-  if (myField.value == "only" ) {
-    myField.value = `Boleto Bancário em 6 parcelas sendo a primeira para ${dueDatesString} e as demais subsequentes até o mês de dezembro de 2024`;
-  }else {
-    myField.value = `Boleto Bancário em 1 parcela sendo o pagamento para ${dueDatesString}`;
+  // Add options based on the selected value
+  if (selectedValue === "vista") {
+    var originalValue = document.getElementById("metragem").value;
+    var discountedValue = calculateDiscount(originalValue, 10);
+    select2.innerHTML += "<option value='" + discountedValue + "'>" + discountedValue + "</option>";
+  } else if (selectedValue === "parcelado") {
+    select2.innerHTML += "<option value='1+5 (6 total)'>1+5 (6 total)</option>";
   }
 }
 
-form.addEventListener("submit", (event) => {
-  modifyField();
-  // (Opcional) setTimeout() se precisar de um atraso
-});
+function calculateDiscount(value, percentage) {
+  var originalValue = parseFloat(value);
+  var discount = originalValue * (percentage / 100);
+  var discountedValue = originalValue - discount;
+  return discountedValue.toFixed(2);
+}
 
 // Add event listeners to the radio inputs
 Array.from(pagRadioInput).forEach(radio => {
   radio.addEventListener("change", handleRadioChange);
 });
+
+var form = document.getElementById('multi-page-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from being submitted
+
+  var select2 = document.getElementById("select2");
+  var selectedValue = select2.value;
+  var paymentMethod = "";
+
+  var radioInputs = document.getElementsByName("payment");
+  for (var i = 0; i < radioInputs.length; i++) {
+    if (radioInputs[i].checked) {
+      paymentMethod = radioInputs[i].value;
+      break;
+    }
+  }
+
+  var dueDate = new Date();
+  dueDate.setDate(dueDate.getDate() + 7);
+  var dueDateString = formatDate(dueDate);
+
+  if (paymentMethod === "vista") {
+    select2.value = "Boleto Bancário em 1 parcela sendo o pagamento para " + dueDateString;
+  } else if (paymentMethod === "parcelado") {
+    select2.value = "Boleto Bancário em 6 parcelas sendo a primeira para " + dueDateString + " e as demais subsequentes até o mês de dezembro de 2024";
+  }
+
+  // Now you can proceed with sending the form data to the database
+  // ...
+});
+
+function formatDate(date) {
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
+  return day + "/" + month + "/" + year;
+}
