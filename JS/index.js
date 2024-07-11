@@ -227,9 +227,6 @@ function handleRadioChange() {
     }
   }
 
-  // Clear existing options
-  select2.innerHTML = "";
-
   // Add options based on the selected value
   if (selectedValue === "vista") {
     var originalValue = document.getElementById("metragem").value;
