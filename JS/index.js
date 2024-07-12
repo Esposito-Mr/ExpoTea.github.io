@@ -303,7 +303,7 @@ Array.from(pagRadioInput).forEach(radio => {
   radio.addEventListener("change", handleRadioChange);
 });
 
-const form = document.getElementById('multi-page-form');
+const formulario = document.getElementById('multi-page-form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
