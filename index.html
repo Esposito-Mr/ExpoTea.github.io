@@ -2,16 +2,20 @@
 <html>
 <head>
   <title>ExpoTEA</title>
-  <link rel="stylesheet" href="/ExpoTea.github.io/CSS/index.css">
+  <!-- <link rel="stylesheet" href="/ExpoTea.github.io/CSS/index.css"> -->
   <link rel="icon" type="image/x-icon" href="/ExpoTea.github.io/images/d698ac58-bc9b-42d3-ae6d-9f9678693f22.png">
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/number-to-words"></script>
+
+
 
 </head>
 <body>
   <div class="container">
     <div class="header">
+      <img src="/ExpoTea.github.io/images/01.png" alt="">
       <img src="/ExpoTea.github.io/images/01.png" alt="">
     </div>
     <form id="multi-page-form" method="POST">
@@ -242,19 +246,17 @@
           <input type="radio" name="forma" id="parcelado" value="parcelado"> Parcelado
         </div>
 
-        <div class="form-group" id="represent1">
-          <label for="represent">Você é representante?</label>
-          <select name="representant" id="represent">                    
-            <option value="default">Selecione uma opção</option>
-            <option value="yah">Sim</option>
-            <option value="No">Não</option>
-          </select>
-        </div>
 
         <div class="form-group" id="pay1">
           <label for="pay">Pagamento</label>
           <select name="payment" id="pay">                    
             
+          </select>
+        </div>
+
+        <div class="form-group" id="represent1">
+          <label for="represent">Representante Comercial</label>
+          <input type="text" name="nome representante" id="">
           </select>
         </div>
 
