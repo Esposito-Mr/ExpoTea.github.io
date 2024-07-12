@@ -1,25 +1,3 @@
-const form = document.getElementById('multi-page-form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const select2 = document.getElementById("select2");
-  const selectedValue = select2.value;
-  const paymentMethod = document.querySelector('input[name="forma"]:checked').value;
-
-  const dueDate = new Date();
-  dueDate.setDate(dueDate.getDate() + 7);
-  const dueDateString = formatDate(dueDate);
-
-  if (paymentMethod === "vista") {
-    select2.value = `Boleto Bancário em 1 parcela sendo o pagamento para ${dueDateString}`;
-  } else if (paymentMethod === "parcelado") {
-    select2.value = `Boleto Bancário em 6 parcelas sendo a primeira para ${dueDateString} e as demais subsequentes até o mês de dezembro de 2024`;
-  }
-
-  // Now you can proceed with sending the form data to the database
-  sendDataToDatabase(select2.value, selectedValue, paymentMethod);
-});
-
 // Your Firebase configuration (from your project settings)
 const firebaseConfig = {
   apiKey: "AIzaSyDQaauwpD5GiiM6nokB9ckLXE6GuhvcrXI",
