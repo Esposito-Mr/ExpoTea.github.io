@@ -32,21 +32,24 @@ firebase.auth().signInAnonymously()
       // Convert FormData to regular object if needed
       const formValues = Object.fromEntries(formData.entries());
   
-      // Send form data to Firestore
-      db.collection("formSubmissions").add(formValues)
-        .then(() => {
-          console.log("Form data submitted successfully!");
-          alert("Form submitted successfully!"); // Display a success message       to the user
-          form.reset(); // Clear the form after successful submission
-        })
-        .catch((error) => {
-          console.error("Error submitting form data:", error);
-          if(error.code === 'permission-denied'){
-              alert("Permission denied. Check your Firestore security rules.");
-          }else{
-              alert("An error occurred while submitting the form. Please try      again."); // Display a generic error message to the user
-          }
-        });
+// Delay the execution of sending form data to Firestore
+setTimeout(() => {
+  // Send form data to Firestore
+  db.collection("formSubmissions").add(formValues)
+    .then(() => {
+      console.log("Form data submitted successfully!");
+      alert("Form submitted successfully!"); // Display a success message to the user
+      form.reset(); // Clear the form after successful submission
+    })
+    .catch((error) => {
+      console.error("Error submitting form data:", error);
+      if (error.code === 'permission-denied') {
+        alert("Permission denied. Check your Firestore security rules.");
+      } else {
+        alert("An error occurred while submitting the form. Please try again."); // Display a generic error message to the user
+      }
     });
-  }
+}, 2000); // Delay the execution by 2 seconds (adjust the time as needed)
+});
+}
   
