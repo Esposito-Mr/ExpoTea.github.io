@@ -1,3 +1,17 @@
+  // Define the formatDate function
+  function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
+  const dueDate = new Date();
+  dueDate.setDate(dueDate.getDate() + 7);
+  const dueDateString = formatDate(dueDate);
+
+  console.log(dueDateString); // Outputs the formatted date
+
 // Your Firebase configuration (from your project settings)
 const firebaseConfig = {
   apiKey: "AIzaSyDQaauwpD5GiiM6nokB9ckLXE6GuhvcrXI",
@@ -27,29 +41,41 @@ firebase.auth().signInAnonymously()
   
     form.addEventListener("submit", (event) => {
       event.preventDefault(); // Prevent default form submission
+
+      form.addEventListener("formdata", (e) => {
+        const formData = e.formData;
+  
+        // Check the selected payment method
+        const paymentMethod = formData.get('forma');
+  
+        if (paymentMethod === 'vista') {
+            formData.set('payment', `Boleto Bancário em 1 parcela sendo o pagamento para ${dueDateString}`);
+        } else if (paymentMethod === 'parcelado') {
+          formData.set('payment', `Boleto Bancário em 6 parcelas sendo a primeira para ${dueDateString} e as demais subsequentes até o mês de dezembro de 2024`);
+        }
+      });
   
       const formData = new FormData(form); // Get form data as an object
       // Convert FormData to regular object if needed
       const formValues = Object.fromEntries(formData.entries());
   
-// Delay the execution of sending form data to Firestore
-setTimeout(() => {
-  // Send form data to Firestore
-  db.collection("formSubmissions").add(formValues)
-    .then(() => {
-      console.log("Form data submitted successfully!");
-      alert("Form submitted successfully!"); // Display a success message to the user
-      form.reset(); // Clear the form after successful submission
-    })
-    .catch((error) => {
-      console.error("Error submitting form data:", error);
-      if (error.code === 'permission-denied') {
-        alert("Permission denied. Check your Firestore security rules.");
-      } else {
-        alert("An error occurred while submitting the form. Please try again."); // Display a generic error message to the user
-      }
+      // Delay the execution of sending form data to Firestore
+      setTimeout(() => {
+        // Send form data to Firestore
+        db.collection("formSubmissions").add(formValues)
+          .then(() => {
+           console.log("Form data submitted successfully!");
+           alert("Form submitted successfully!"); // Display a success message to the user
+           form.reset(); // Clear the form after successful submission
+          })
+          .catch((error) => {
+           console.error("Error submitting form data:", error);
+           if (error.code === 'permission-denied') {
+             alert("Permission denied. Check your Firestore security rules.");
+           } else {
+             alert("An error occurred while submitting the form. Please try again."); // Display a generic error message to the user
+           }
+          });
+        }, 5000); // Delay the execution by 2 seconds (adjust the time as needed)
     });
-}, 2000); // Delay the execution by 2 seconds (adjust the time as needed)
-});
-}
-  
+  }

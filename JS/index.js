@@ -2,8 +2,8 @@ const meticSelect = document.getElementById("metragem");
 const textInput = document.getElementById("valor");
 
 var currentPage = 1;
-    var form = document.getElementById('multi-page-form');
-    var pages = form.getElementsByClassName('page');
+var form = document.getElementById('multi-page-form');
+var pages = form.getElementsByClassName('page');
 
     function showPage(pageNumber) {
       for (var i = 0; i < pages.length; i++) {
@@ -62,7 +62,7 @@ function updateSecondSelect() {
       secondSelect.innerHTML += "<option value='10m x 10m [100m² de área]'>10m x 10m [100m² de área] (10 metros de Frente)</option>";
     } if (selectedValue === "presidencial") {
       secondSelect.innerHTML += "<option value='5m x 5m [15m² de área]'>5m x 5m [15m² de área] (5 metros de Frente)</option>";
-    } if (selectedValue === "master") {
+    } if (selectedValue === "presidencial Master") {
       secondSelect.innerHTML += "<option value='6.5m x 5m [32.5m² de área]'>6.5m x 5m [32.5m² de área] (6.5 metros de Frente)</option>";
     } else if (selectedValue === "prata") {
     if (answer === "Não") {
@@ -201,14 +201,12 @@ function updateTextInput() {
   }
 }
 
-
-
 // Get references to the radio input and select tags
-const pagRadioInput = document.getElementsByName("forma");
 const select2 = document.getElementById("pay");
 
 // Function to handle radio input changes
-function handleRadioChange() {
+function handleSelectChange() {
+  const formaSelect = document.getElementById("formaSelect");
   const selectedValue = meticSelect.value;
   const selectedOption = priceMap[selectedValue];
 
@@ -216,13 +214,13 @@ function handleRadioChange() {
 
   const originalValue = selectedOption.price;
 
-  switch (this.value) {
+  switch (formaSelect.value) {
     case "vista":
       const discountedValue = calculateDiscount(originalValue, 10);
       const formattedValue = discountedValue.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
       const updatedText = `${formattedValue} (${convertToText(discountedValue)})`;
       select2.options.length = 0;
-      select2.innerHTML = `<option value="${discountedValue}">${updatedText}</option>`;
+      select2.innerHTML = `<option value="${updatedText}">${updatedText}</option>`;
       break;
     case "parcelado":
       select2.options.length = 0;
@@ -250,7 +248,6 @@ function convertToText(value) {
   let inteiro = Math.floor(num);
   let decimal = Math.round((num - inteiro) * 100);
 
-  // Convert the integer part
   if (inteiro > 0) {
     if (inteiro > 999999) {
       real += `${unidade[Math.floor(inteiro / 1000000)]} milhão `;
@@ -279,7 +276,6 @@ function convertToText(value) {
     real += 'reais';
   }
 
-  // Convert the decimal part
   if (decimal > 0) {
     if (decimal > 9 && decimal < 20) {
       centavos += `${dez_a_dezenove[decimal - 10]} `;
@@ -298,29 +294,5 @@ function convertToText(value) {
   return `${real} ${centavos}`.trim();
 }
 
-// Add event listeners to the radio inputs
-Array.from(pagRadioInput).forEach(radio => {
-  radio.addEventListener("change", handleRadioChange);
-});
-
-const formulario = document.getElementById('multi-page-form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const select2 = document.getElementById("select2");
-  const selectedValue = select2.value;
-  const paymentMethod = document.querySelector('input[name="forma"]:checked').value;
-
-  const dueDate = new Date();
-  dueDate.setDate(dueDate.getDate() + 7);
-  const dueDateString = formatDate(dueDate);
-
-  if (paymentMethod === "vista") {
-    select2.value = `Boleto Bancário em 1 parcela sendo o pagamento para ${dueDateString}`;
-  } else if (paymentMethod === "parcelado") {
-    select2.value = `Boleto Bancário em 6 parcelas sendo a primeira para ${dueDateString} e as demais subsequentes até o mês de dezembro de 2024`;
-  }
-
-  // Now you can proceed with sending the form data to the database
-  sendDataToDatabase(select2.value, selectedValue, paymentMethod);
-});
+const formaSelect = document.getElementById("formaSelect");
+formaSelect.addEventListener("change", handleSelectChange);
