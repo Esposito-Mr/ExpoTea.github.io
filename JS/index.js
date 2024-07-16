@@ -52,7 +52,7 @@ function updateSecondSelect() {
       secondSelect.innerHTML += "<option value='3m x 2m [6m² de área]'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
     } else if (answer === "Sim") {
       secondSelect.setAttribute('disabled', 'disabled');
-      secondSelect.innerHTML += "<option value='2m x 2m [4m² de área]'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
+      secondSelect.innerHTML += "<option value='2m x 2m [4m² de área] - Food'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
     }
   } if (selectedValue === "diamante") {
       secondSelect.innerHTML += "<option value='4m x 5m [20m² de área]'>4m x 5m [20m² de área] (4 metros de Frente)</option>";
@@ -82,12 +82,13 @@ function updateSecondSelect() {
       secondSelect.innerHTML += "<option value='4.5m x 2m - Área Food Truck [9m² de área]'>4.5m x 2m - Área Food Truck [9m² de área] (4.5 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='2.25m x 7m - Área Food Truck [15.75m² de área]'>2.25m x 7m - Área Food Truck [15.75m² de área] (2.5 metros de Frente)</option>";
     }
-  }if (selectedValue === "vila") {
+  } if (selectedValue === "vila") {
     secondSelect.setAttribute('disabled', 'disabled');
-    secondSelect.innerHTML += "<option value='2m x 2m [4m² de área] - Vila'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
+    secondSelect.innerHTML += "<option value='2m x 2m [4m² de área]'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
   }
  // Trigger update for the text input
   updateTextInput();
+  updateSecret();
 }
 
 const selectElement = document.getElementById('cota');
@@ -115,7 +116,7 @@ conRadioInputs.forEach(function(conRadioInputs) {
 });
 
 const priceMap = {
-  "2m x 2m [4m² de área] - Vila": {
+  "2m x 2m [4m² de área]": {
     price: 5923,
     text: "R$ 5.923,00 (cinco mil, novecentos e vinte e três reais)"
   },
@@ -123,7 +124,7 @@ const priceMap = {
     price: 11155,
     text: "R$ 11.155,00 (onze mil, cento e quinze reais)"
   },
-  "2m x 2m [4m² de área]": {
+  "2m x 2m [4m² de área] - Food": {
     price: 3680,
     text: "R$ 3.680,00 (três mil, seiscentos e oitenta reais)"
   },
@@ -199,6 +200,42 @@ function updateTextInput() {
   } else {
     textInput.value = ""; // Reset the text input if the selected value is not found
   }
+}
+
+const kvaOptions = {
+  apoio: [],
+  bronze: ["Energia elétrica normal 1 Kva's"],
+  diamante: ["Energia elétrica normal 2 Kva's"],
+  elite: ["Energia elétrica normal 4 Kva's"],
+  ilha: ["Energia elétrica normal 4 Kva's"],
+  ouro: ["Energia elétrica normal 1 Kva's"],
+  prata: ["Energia elétrica normal 1 Kva's"],
+  presidencial: ["Energia elétrica normal 2 Kva's"],
+  "presidencial Master": ["Energia elétrica normal 3 Kva's"],
+  vila: ["Energia elétrica normal 1 Kva's"]
+};
+
+function updateSecret() {
+   const cotaSelect = document.getElementById("cota");
+   const kvaSelect = document.getElementById("kva");
+   const selectedCota = cotaSelect.value;
+
+  kvaSelect.innerHTML = "";
+
+   if (selectedCota === "default" || kvaOptions[selectedCota].length === 0) {
+     const defaultOption = document.createElement("option");
+     defaultOption.text = "Selecione uma Opção";
+     defaultOption.value = "default";
+     kvaSelect.add(defaultOption);
+     return;
+   }
+
+  kvaOptions[selectedCota].forEach(kva => {
+    const option = document.createElement("option");
+    option.text = kva;
+    option.value = kva.toLowerCase().replace(/ /g, "_");
+    kvaSelect.add(option);
+  });
 }
 
 // Get references to the radio input and select tags
@@ -296,3 +333,29 @@ function convertToText(value) {
 
 const formaSelect = document.getElementById("formaSelect");
 formaSelect.addEventListener("change", handleSelectChange);
+
+const dateInput = document.getElementById("dateInput");
+const formattedDateDiv = document.getElementById("formattedDate");
+
+// Get today's date and format it as YYYY-MM-DD
+const today = new Date().toISOString().slice(0, 10);
+
+// Set the default value of the date input
+dateInput.value = today;
+
+// Array of month names
+const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+// Function to format the date
+function formatDate(dateString) {
+  const [year, month, day] = dateString.split("-");
+  return `${day} de ${monthNames[parseInt(month) - 1]} de ${year}`;
+}
+
+// Display the initial formatted date
+formattedDateDiv.textContent = formatDate(today);
+
+// Update the formatted date when the input changes
+dateInput.addEventListener("input", () => {
+  formattedDateDiv.textContent = formatDate(dateInput.value);
+});

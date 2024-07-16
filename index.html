@@ -3,7 +3,7 @@
 <head>
   <title>ExpoTEA</title>
   <link rel="stylesheet" href="/ExpoTea.github.io/CSS/index.css">
-  <link rel="icon" type="image/x-icon" href="/images/d698ac58-bc9b-42d3-ae6d-9f9678693f22.png">
+  <link rel="icon" type="image/x-icon" href="/ExpoTea.github.io/images/d698ac58-bc9b-42d3-ae6d-9f9678693f22.png">
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -202,7 +202,7 @@
           <input type="text" name="estande" id="estande" required>
         </div>
         <div class="form-group"><label for="cota">Cota Pretendida</label>
-          <select name="cota" id="cota" onchange="updateSecondSelect()">
+          <select name="cota" id="cota" onchange="callMultiple()">
             <option value="default">Selecione uma Opção</option>
             <option value="apoio">Apoio</option>
             <option value="bronze">Bronze</option>
@@ -216,6 +216,14 @@
             <option value="vila">Vila</option>
           </select>
         </div>
+
+        <div class="form-group" style="display: none;">
+          <label for="Kva">Quantidade de Kva</label>
+          <select name="kva" id="kva">
+
+          </select>
+        </div>
+
         <div class="hidden-itens" id="foodRadio" style="display: none;">
             <p style="font-weight: 900;">É Área Food?</p>
             <input type="radio" name="food" id="ja" value="Sim" onchange="updateSecondSelect()"> Sim
@@ -266,6 +274,12 @@
           <input type="text" name="nome representante" id="">
           </select>
         </div>
+
+        <div class="form-group" style="display: none;">
+          <label for="dateInput">Data:</label>
+          <input type="date" id="dateInput" value="">
+          <div id="formattedDate"></div>
+        </div>      
 
         <div class="form-group">
           <button type="button" onclick="previousPage()">Voltar</button>
