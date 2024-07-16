@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>ExpoTEA</title>
-  <link rel="stylesheet" href="/ExpoTea.github.io/CSS/index.css">
-  <link rel="icon" type="image/x-icon" href="/ExpoTea.github.io/images/d698ac58-bc9b-42d3-ae6d-9f9678693f22.png">
+  <link rel="stylesheet" href="/ExpoTea.github.io/sCSS/index.css">
+  <link rel="icon" type="image/x-icon" href="/ExpoTea.github.io/simages/d698ac58-bc9b-42d3-ae6d-9f9678693f22.png">
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -15,7 +15,7 @@
 <body>
   <div class="container">
     <div class="header">
-      <img src="/ExpoTea.github.io/images/01.png" alt="">
+      <img src="/ExpoTea.github.io/simages/01.png" alt="">
     </div>
     <form id="multi-page-form" method="POST">
       <div class="page active" id="page1">
@@ -202,7 +202,7 @@
           <input type="text" name="estande" id="estande" required>
         </div>
         <div class="form-group"><label for="cota">Cota Pretendida</label>
-          <select name="cota" id="cota" onchange="callMultiple()">
+          <select name="cota" id="cota" onchange="updateSecondSelect()">
             <option value="default">Selecione uma Opção</option>
             <option value="apoio">Apoio</option>
             <option value="bronze">Bronze</option>
@@ -216,18 +216,24 @@
             <option value="vila">Vila</option>
           </select>
         </div>
-
-        <div class="form-group" style="display: none;">
+        <div class="form-group">
           <label for="Kva">Quantidade de Kva</label>
           <select name="kva" id="kva">
 
           </select>
         </div>
-
         <div class="hidden-itens" id="foodRadio" style="display: none;">
             <p style="font-weight: 900;">É Área Food?</p>
             <input type="radio" name="food" id="ja" value="Sim" onchange="updateSecondSelect()"> Sim
             <input type="radio" name="food" id="nein" value="Não" onchange="updateSecondSelect()"> Não
+        </div>
+        <div class="form-group">
+          <label for="montagem"></label>
+          <select name="montagem" id="montagem">
+            <option value="default">Escolha uma opção</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="metragem">Metragem do Estande</label>
@@ -275,11 +281,14 @@
           </select>
         </div>
 
-        <div class="form-group" style="display: none;">
-          <label for="dateInput">Data:</label>
-          <input type="date" id="dateInput" value="">
-          <div id="formattedDate"></div>
-        </div>      
+
+      <div class="form-group" style="display: none;">
+        <label for="dateInput">Data:</label>
+        <input type="date" id="dateInput" value="">
+        <div id="formattedDate"></div>
+      </div>
+      <input type="hidden" id="hiddenFormattedDate" name="formattedDate" style="display: none;">
+      <div id="formattedDateContainer" style="display: none;"></div> 
 
         <div class="form-group">
           <button type="button" onclick="previousPage()">Voltar</button>
@@ -290,7 +299,7 @@
       </div>
     </form>
   </div>
-  <script src="/ExpoTea.github.io/JS/index.js"></script>
-  <script type="module" src="/ExpoTea.github.io/JS/app.js"></script>
+  <script src="/ExpoTea.github.io/sJS/index.js"></script>
+  <script type="module" src="/ExpoTea.github.io/sJS/app.js"></script>
 </body>
 </html>

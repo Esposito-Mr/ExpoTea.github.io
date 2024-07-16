@@ -233,7 +233,7 @@ function updateSecret() {
   kvaOptions[selectedCota].forEach(kva => {
     const option = document.createElement("option");
     option.text = kva;
-    option.value = kva.toLowerCase().replace(/ /g, "_");
+    option.value = kva.toLowerCase().replace(/ /g, " ");
     kvaSelect.add(option);
   });
 }
@@ -331,31 +331,46 @@ function convertToText(value) {
   return `${real} ${centavos}`.trim();
 }
 
-const formaSelect = document.getElementById("formaSelect");
-formaSelect.addEventListener("change", handleSelectChange);
-
 const dateInput = document.getElementById("dateInput");
 const formattedDateDiv = document.getElementById("formattedDate");
+const formattedDateContainer = document.getElementById("formattedDateContainer");
+const hiddenFormattedDate = document.getElementById("hiddenFormattedDate");
+const dateForm = document.getElementById("dateForm");
 
-// Get today's date and format it as YYYY-MM-DD
 const today = new Date().toISOString().slice(0, 10);
-
-// Set the default value of the date input
 dateInput.value = today;
 
-// Array of month names
 const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-// Function to format the date
 function formatDate(dateString) {
   const [year, month, day] = dateString.split("-");
   return `${day} de ${monthNames[parseInt(month) - 1]} de ${year}`;
 }
 
-// Display the initial formatted date
-formattedDateDiv.textContent = formatDate(today);
+function displayFormattedDate(dateString) {
+  const newDiv = document.createElement("div");
+  newDiv.textContent = formatDate(dateString);
+  formattedDateContainer.appendChild(newDiv);
+}
 
-// Update the formatted date when the input changes
+function updateHiddenFormattedDate(dateString) {
+  hiddenFormattedDate.value = formatDate(dateString);
+}
+
+formattedDateDiv.textContent = formatDate(today);
+displayFormattedDate(today);
+updateHiddenFormattedDate(today);
+
 dateInput.addEventListener("input", () => {
-  formattedDateDiv.textContent = formatDate(dateInput.value);
+  const formattedDate = formatDate(dateInput.value);
+  formattedDateDiv.textContent = formattedDate;
+  displayFormattedDate(dateInput.value);
+  updateHiddenFormattedDate(dateInput.value);
+});
+
+dateForm.addEventListener("submit", (event) => {
+  if (!hiddenFormattedDate.value) {
+    alert("Formatted date is missing!");
+    event.preventDefault();
+  }
 });
