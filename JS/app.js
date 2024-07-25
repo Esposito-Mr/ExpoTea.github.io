@@ -76,6 +76,6 @@ firebase.auth().signInAnonymously()
              alert("An error occurred while submitting the form. Please try again."); // Display a generic error message to the user
            }
           });
-        }, 5000); // Delay the execution by 2 seconds (adjust the time as needed)
+        }, 1500); // Delay the execution by 2 seconds (adjust the time as needed)
     });
   }
