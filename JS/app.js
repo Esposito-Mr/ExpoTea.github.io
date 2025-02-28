@@ -65,7 +65,7 @@ firebase.auth().signInAnonymously()
         db.collection("formSubmissions").add(formValues)
           .then(() => {
            console.log("Form data submitted successfully!");
-           alert("Form submitted successfully!"); // Display a success message to the user
+           alert("Obrigado pela Inscrição!"); // Display a success message to the user
            form.reset(); // Clear the form after successful submission
           })
           .catch((error) => {
@@ -76,6 +76,6 @@ firebase.auth().signInAnonymously()
              alert("An error occurred while submitting the form. Please try again."); // Display a generic error message to the user
            }
           });
-        }, 1500); // Delay the execution by 2 seconds (adjust the time as needed)
+        }, 500); // Delay the execution by 2 seconds (adjust the time as needed)
     });
   }
