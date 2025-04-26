@@ -117,48 +117,48 @@ conRadioInputs.forEach(function(conRadioInputs) {
 
 const priceMap = {
   "2m x 2m [4m² de área]": {
-    price: 5923,
-    text: "R$ 5.923,00 (cinco mil, novecentos e vinte e três reais)"
+    price: 6150,
+    text: "R$ 6.510,00 (seis mil, quinhentos e dez reais)"
   },
   "3m x 2m [6m² de área]": {
-    price: 11155,
-    text: "R$ 11.155,00 (onze mil, cento e quinze reais)"
+    price: 11850,
+    text: "R$ 11.850,00 (onze mil, oitocentos e cinquenta reais)"
   },
   "2m x 2m [4m² de área] - Food": {
     price: 3680,
     text: "R$ 3.680,00 (três mil, seiscentos e oitenta reais)"
   },
   "4m x 3m [12m² de área]": {
-    price: 20355,
-    text: "R$ 20.355,00 (vinte mil, trezentos e cinquenta e cinco reais)"
+    price: 20000,
+    text: "R$ 20.000,00 (vinte mil reais)"
   },
   "2.5m x 2.5m [6.25m² de área]": {
     price: 4600,
     text: "R$ 4.600,00 (quatro mil e seiscentos reais)"
   },
   "4m x 5m [20m² de área]": {
-    price: 34558,
-    text: "R$ 34.558,00 (trinta e quatro mil, quinhentos e cinquenta e oito reais)"
+    price: 36955,
+    text: "R$ 36.955,00 (trinta e seis mil, novecentos e cinquenta e cinco reais)"
   },
-  "5m x 5m [15m² de área]": {
-    price: 42608,
-    text: "R$ 42.608,00 (quarenta e dois mil, seiscentos e oito reais)"
+  "5m x 5m [25m² de área]": {
+    price: 43750,
+    text: "R$ 43.750,00 (quarenta e três mil, setecentos e cinquenta reais)"
   },
   "6.5m x 5m [32.5m² de área]": {
-    price: 56810,
-    text: "R$ 56.810,00 (cinquenta e seis mil, oitocentos e dez reais)"
+    price: 60812,
+    text: "R$ 60.812,00 (sessenta mil, oitocentos e doze reais)"
   },
   "5m x 10m [50m² de área]": {
-    price: 77913,
-    text: "R$ 77.913,00 (setenta e sete mil, novecentos e treze reais)"
+    price: 87750,
+    text: "R$ 87.750,00 (oitenta e sete mil, setecentos e cinquenta reais)"
   },
   "10m x 10m [100m² de área]": {
-    price: 141163,
-    text: "R$ 141.163,00 (cento e quarenta e um mil, cento e sessenta e três reais)"
+    price: 175413,
+    text: "R$ 175.413,00 (cento e setenta e cinco mil, quatrocentos e treze reais)"
   },
   "3m x 5m [15m² de área]": {
-    price: 26105,
-    text: "R$ 26.105,00 (vinte e seis mil, cento e cinco reais)"
+    price: 28205,
+    text: "R$ 28.205,00 (vinte e oito mil, duzentos e cinco reais)"
   },
   "4.5m x 2.5m [11.25m² de área]": {
     price: 10120,
