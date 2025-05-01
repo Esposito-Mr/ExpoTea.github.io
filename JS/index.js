@@ -118,7 +118,7 @@ conRadioInputs.forEach(function(conRadioInputs) {
 const priceMap = {
   "2m x 2m [4m² de área]": {
     price: 6150,
-    text: "R$ 6.510,00 (seis mil, quinhentos e dez reais)"
+    text: "R$ 6.150,00 (seis mil, quinhentos e dez reais)"
   },
   "3m x 2m [6m² de área]": {
     price: 11850,
