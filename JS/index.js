@@ -61,7 +61,7 @@ function updateSecondSelect() {
     } if (selectedValue === "ilha") {
       secondSelect.innerHTML += "<option value='10m x 10m [100m² de área]'>10m x 10m [100m² de área] (10 metros de Frente)</option>";
     } if (selectedValue === "presidencial") {
-      secondSelect.innerHTML += "<option value='5m x 5m [15m² de área]'>5m x 5m [15m² de área] (5 metros de Frente)</option>";
+      secondSelect.innerHTML += "<option value='5m x 5m [25m² de área]'>5m x 5m [25m² de área] (5 metros de Frente)</option>";
     } if (selectedValue === "presidencial Master") {
       secondSelect.innerHTML += "<option value='6.5m x 5m [32.5m² de área]'>6.5m x 5m [32.5m² de área] (6.5 metros de Frente)</option>";
     } else if (selectedValue === "prata") {
