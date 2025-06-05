@@ -64,13 +64,13 @@ firebase.auth().signInAnonymously()
         // Send form data to Firestore
         db.collection("formSubmissions").add(formValues)
           .then(() => {
-// 1) Oculta o container de formulário (todas as etapas)
-      const formContainer = document.getElementById("multi-page-form");
-      formContainer.style.display = "none";
+            // 1) Oculta o container de formulário (todas as etapas)
+            const formContainer = document.getElementById("multi-page-form");
+            formContainer.style.display = "none";
 
-      // 2) Exibe a div de agradecimento
-      const thankYouPage = document.getElementById("thankYouPage");
-      thankYouPage.style.display = "block";
+            // 2) Exibe a div de agradecimento
+            const thankYouPage = document.getElementById("lastPage");
+            thankYouPage.style.display = "block";
            form.reset(); // Clear the form after successful submission
           })
           .catch((error) => {
@@ -81,6 +81,6 @@ firebase.auth().signInAnonymously()
              alert("An error occurred while submitting the form. Please try again."); // Display a generic error message to the user
            }
           });
-        }, 200); // Delay the execution by 2 seconds (adjust the time as needed)
+        }, 2000); // Delay the execution by 2 seconds (adjust the time as needed)
     });
   }
