@@ -65,7 +65,7 @@ firebase.auth().signInAnonymously()
         db.collection("formSubmissions").add(formValues)
           .then(() => {
 // 1) Oculta o container de formulário (todas as etapas)
-      const formContainer = document.getElementById("formContainer");
+      const formContainer = document.getElementById("multi-page-form");
       formContainer.style.display = "none";
 
       // 2) Exibe a div de agradecimento
