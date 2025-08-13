@@ -45,44 +45,50 @@ function updateSecondSelect() {
 
   // Clear existing options
   secondSelect.innerHTML = "";
+  credentials.innerHTML = "";
+
+    const setCreds = (n) => {
+    credentials.innerHTML = `<option value='${n} pessoas'>${n} Credenciais</option>`;
+    };
 
   // Add options based on the selected value and answer
   if (selectedValue === "bronze") {
     if (answer === "Não") {
       secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='3m x 2m [6m² de área]'>3m x 2m [6m² de área] (2 metros de Frente) </option>";
-      credentials.setAttribute('disabled', 'disabled');
-      credentials.innerHTML += "<option value='2 pessoas'> 2 Credendciais </option>";
+      setCreds(2);
     } else if (answer === "Sim") {
       secondSelect.setAttribute('disabled', 'disabled');
       secondSelect.innerHTML += "<option value='2m x 2m [4m² de área] - Food'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
+      setCreds(2);
     }
   } if (selectedValue === "diamante") {
       secondSelect.innerHTML += "<option value='4m x 5m [20m² de área]'>4m x 5m [20m² de área] (4 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='4 pessoas'> 4 Credendciais </option>";
+      setCreds(4);
     } if (selectedValue === "elite") {
       secondSelect.innerHTML += "<option value='5m x 10m [50m² de área]'>5m x 10m [50m² de área] (5 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='6 pessoas'> 6 Credendciais </option>";
+      setCreds(6);
     } if (selectedValue === "ilha") {
       secondSelect.innerHTML += "<option value='10m x 10m [100m² de área]'>10m x 10m [100m² de área] (10 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='6 pessoas'> 6 Credendciais </option>";
+      setCreds(6);
     } if (selectedValue === "presidencial") {
       secondSelect.innerHTML += "<option value='5m x 5m [25m² de área]'>5m x 5m [25m² de área] (5 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='4 pessoas'> 4 Credendciais </option>";
+      setCreds(4);
     } if (selectedValue === "presidencial Master") {
       secondSelect.innerHTML += "<option value='6.5m x 5m [32.5m² de área]'>6.5m x 5m [32.5m² de área] (6.5 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='5 pessoas'> 5 Credendciais </option>";
+      setCreds(5);
     } else if (selectedValue === "prata") {
     if (answer === "Não") {
       secondSelect.innerHTML += "<option value='4m x 3m [12m² de área]'>4m x 3m [12m² de área] (3 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='3 pessoas'> 3 Credendciais </option>";
+      setCreds(3);
     } else if (answer === "Sim") {
       secondSelect.innerHTML += "<option value='2.5m x 2.5m [6.25m² de área]'>2.5m x 2.5m [6.25m² de área] (2.5 metros de Frente)</option>";
+      setCreds(3);
     }
   } else if (selectedValue === "ouro") {
     if (answer === "Não") {
       secondSelect.innerHTML += "<option value='3m x 5m [15m² de área]'>3m x 5m [15m² de área] (3 metros de Frente)</option>";
-      credentials.innerHTML += "<option value='3 pessoas'> 3 Credendciais </option>";
+      setCreds(3);
     } else if (answer === "Sim") {
       secondSelect.innerHTML += "<option value='4.5m x 2.5m [11.25m² de área]'>4.5m x 2.5m [11.25m² de área] (4.5 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='4m x 3m [12² de área]'>4m x 3m [12² de área] (4 metros de Frente)</option>";
@@ -91,11 +97,12 @@ function updateSecondSelect() {
       secondSelect.innerHTML += "<option value='3m x 5m - Área Food Truck [15m² de área]'>3m x 5m - Área Food Truck [15m² de área] (3 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='4.5m x 2m - Área Food Truck [9m² de área]'>4.5m x 2m - Área Food Truck [9m² de área] (4.5 metros de Frente)</option>";
       secondSelect.innerHTML += "<option value='2.25m x 7m - Área Food Truck [15.75m² de área]'>2.25m x 7m - Área Food Truck [15.75m² de área] (2.5 metros de Frente)</option>";
+      setCreds(3);
     }
   } if (selectedValue === "vila") {
     secondSelect.setAttribute('disabled', 'disabled');
     secondSelect.innerHTML += "<option value='2m x 2m [4m² de área]'>2m x 2m [4m² de área] (2 metros de Frente) </option>";
-    credentials.innerHTML += "<option value='2 pessoas'> 2 Credendciais </option>";
+    setCreds(2);
   }
  // Trigger update for the text input
   updateTextInput();
