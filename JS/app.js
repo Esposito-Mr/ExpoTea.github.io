@@ -51,7 +51,7 @@ firebase.auth().signInAnonymously()
         if (paymentMethod === 'vista') {
             formData.set('payment', `Boleto Bancário em 1 parcela sendo o pagamento para ${dueDateString}`);
         } else if (paymentMethod === 'parcelado') {
-          formData.set('payment', `Boleto Bancário em 3 parcelas sendo a primeira para ${dueDateString} e as demais subsequentes até o mês de outubro de 2025`);
+          formData.set('payment', `Boleto Bancário em 2 parcelas sendo a primeira para ${dueDateString} e as demais subsequentes até o mês de outubro de 2025`);
         }
       });
   
