@@ -279,7 +279,7 @@ function handleSelectChange() {
       break;
     case "parcelado":
       select2.options.length = 0;
-      select2.innerHTML = "<option value='1+2 (3 total)'>1+2 (3 total)</option>";
+      select2.innerHTML = "<option value='1+1 (2 total)'>1+1 (2 total)</option>";
       break;
   }
 }
